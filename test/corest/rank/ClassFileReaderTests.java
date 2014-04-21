@@ -11,11 +11,15 @@ public class ClassFileReaderTests {
     @Test
     public void testReadFile() throws IOException {
         ClassFileReader reader = new ClassFileReader();
+        assertEquals(expectedList(), reader.read(new File("test/corest/rank/ReadClass.java")));
+    }
+
+    private ArrayList<String> expectedList() {
         ArrayList<String> lines = new ArrayList<>();
         lines.add("package corest.rank;");
         lines.add("");
         lines.add("public class ReadClass {");
         lines.add("}");
-        assertEquals(lines, reader.read(new File("test/corest/rank/ReadClass.java")));
+        return lines;
     }
 }
