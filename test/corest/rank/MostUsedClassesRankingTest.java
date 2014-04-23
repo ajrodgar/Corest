@@ -2,7 +2,7 @@ package corest.rank;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -12,7 +12,8 @@ public class MostUsedClassesRankingTest {
     @Test
     public void getMostUsedClassesRankingTest() {
         HashMap<String, Integer> ranking = MostUsedClassesRanking.getRanking(mockDictionary());
-        Assert.assertEquals(new Integer(1), ranking.get("TestClass"));
+        assertEquals(new Integer(1), ranking.get("TestClass"));
+        assertEquals(new Integer(0), ranking.get("AnotherTestClass"));
     }
     
     private DependencyDictionary mockDictionary() {
