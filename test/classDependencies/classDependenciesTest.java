@@ -18,7 +18,7 @@ public class classDependenciesTest {
                         "public interface ExpressionFactory {\n" +
                         "    public Expression build(Token token);\n" +
                         "}";
-        ClassDependencyEvaluator classDependencyEvaluator = new ClassDependencyEvaluator();
+        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
@@ -32,7 +32,7 @@ public class classDependenciesTest {
                         "public interface ExpressionFactory {\n" +
                         "    public Expression build(Token token);\n" +
                         "}";
-        ClassDependencyEvaluator classDependencyEvaluator = new ClassDependencyEvaluator();
+        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("evaluator.Factory");}}, dependencies);       
     }
