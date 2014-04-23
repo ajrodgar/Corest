@@ -44,8 +44,15 @@ public class classDependenciesTest {
                         "public interface ExpressionFactory {\n" +
                         "    return new NewClass();"+
                         "}";
+        ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
         ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("parser.NewClass");}}, dependencies);
+    }
+
+    private static class ProjectPackagesInformation {
+        public ProjectPackagesInformation() {
+            
+        }
     }
 }
