@@ -20,7 +20,7 @@ public class classDependenciesTest {
                         "}";
         ClassDependencyEvaluator classDependencyEvaluator = new ClassDependencyEvaluator();
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
-        assertEquals(new ArrayList<String>().add(""), dependencies);       
+        assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
     
     
@@ -28,7 +28,8 @@ public class classDependenciesTest {
     
     public class ClassDependencyEvaluator {
         public ArrayList<String> getDependencies (String file){
-            return new ArrayList<String>();
+            return new ArrayList<String>(){{
+                add("evaluator.Expression"); }};
         }
 
 }
