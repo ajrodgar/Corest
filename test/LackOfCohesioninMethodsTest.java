@@ -8,8 +8,14 @@ public class LackOfCohesioninMethodsTest {
     
     
     @Test
-    public void countMethodsinClassTest(){        
+    public void countMethodsInClassTest(){        
         File file=new File("simpleClass.txt");
         assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file)); 
     }
+    
+    @Test
+    public void countAttributesInClassTest(){
+    
+    }    
+    
 }
