@@ -23,16 +23,4 @@ public class classDependenciesTest {
         assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
     
-    
-    
-    
-    public class ClassDependencyEvaluator {
-        public ArrayList<String> getDependencies (String file){
-            return new ArrayList<String>(){{
-                add("evaluator.Expression"); }};
-        }
-
-}
-
-    
 }
