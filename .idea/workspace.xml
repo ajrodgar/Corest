@@ -84,13 +84,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClassCounterTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ClassCounterTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/counters/ClassCounterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.5010526" vertical-offset="0" max-vertical-offset="475">
+            <state line="12" column="98" selection-start="303" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LineCounterTest.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/counters/LineCounterTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="92" selection-start="335" selection-end="335" vertical-scroll-proportion="0.2863158" vertical-offset="0" max-vertical-offset="475">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,10 +118,10 @@
         <option value="$PROJECT_DIR$/test/LineCounterTest.java" />
         <option value="$PROJECT_DIR$/src/counters/CodeLineCounter.java" />
         <option value="$PROJECT_DIR$/src/counters/LineCounter.java" />
-        <option value="$PROJECT_DIR$/test/counters/LineCounterTest.java" />
         <option value="$PROJECT_DIR$/src/counters/ClassCounter.java" />
         <option value="$PROJECT_DIR$/resource/2Class.java" />
         <option value="$PROJECT_DIR$/test/counters/ClassCounterTest.java" />
+        <option value="$PROJECT_DIR$/test/counters/LineCounterTest.java" />
       </list>
     </option>
   </component>
@@ -488,13 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/counters/LineCounterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="30" selection-start="177" selection-end="177" vertical-scroll-proportion="0.1431579" vertical-offset="0" max-vertical-offset="475">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resource/only.classes.in.only.one.directory/2Class.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="18" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
@@ -527,10 +529,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/counters/ClassCounterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="349" selection-end="349" vertical-scroll-proportion="0.5010526" vertical-offset="0" max-vertical-offset="475">
+        <state line="12" column="98" selection-start="303" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/counters/LineCounterTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="92" selection-start="335" selection-end="335" vertical-scroll-proportion="0.2863158" vertical-offset="0" max-vertical-offset="475">
+          <folding />
         </state>
       </provider>
     </entry>
