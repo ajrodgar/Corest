@@ -12,7 +12,7 @@ public class FileStringizer {
            fr = new FileReader (file);
            br = new BufferedReader(fr);   
            String linea;
-           while((linea=br.readLine())!=null){          
+           while((linea=br.readLine())!=null){               
               fileString+=linea;
            }           
         }
@@ -28,5 +28,14 @@ public class FileStringizer {
            }
         }
         return fileString;
+    }
+    
+    
+    public static String format(String file){
+            String formatedFile = file.toString();
+            formatedFile = formatedFile.replace("{","{\n");
+            formatedFile = formatedFile.replace(";",";\n");
+            formatedFile = formatedFile.replace("}","\n}\n");
+            return formatedFile.replace(" ", "");
     }
 }

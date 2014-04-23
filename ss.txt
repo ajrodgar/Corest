@@ -1,0 +1,1 @@
+package game;import game.gameobjects.ships.Ship;public class Player {private String name;private Board board;public Player(String name) {if(x == 0){ return;}for(){}this.name = name;board = new Board();}public String getName() throws Exception{return name;}public Board getBoard() {return board;}public void deployShip(Ship ship){board.deployShip(ship);}}
