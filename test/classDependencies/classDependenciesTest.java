@@ -23,4 +23,18 @@ public class classDependenciesTest {
         assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
     
+    @Test
+    public void anotherClassDependenciesTest(){
+        String file = "package parser;\n" +
+                        "\n" +
+                        "import evaluator.Factory;\n" +
+                        "\n" +
+                        "public interface ExpressionFactory {\n" +
+                        "    public Expression build(Token token);\n" +
+                        "}";
+        ClassDependencyEvaluator classDependencyEvaluator = new ClassDependencyEvaluator();
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        assertEquals(new ArrayList<String>(){{add("evaluator.Factory");}}, dependencies);       
+    }
+    
 }
