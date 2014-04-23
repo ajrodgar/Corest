@@ -30,11 +30,22 @@ public class classDependenciesTest {
                         "import evaluator.Factory;\n" +
                         "\n" +
                         "public interface ExpressionFactory {\n" +
-                        "    public Expression build(Token token);\n" +
+                        "    public Factory build(Token token);\n" +
                         "}";
         ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("evaluator.Factory");}}, dependencies);       
     }
     
+    @Test
+    public void dependenciesWithClassesInSamePackageTest(){
+        String file = "package parser;\n" +
+                        "\n" +
+                        "public interface ExpressionFactory {\n" +
+                        "    return new NewClass();"+
+                        "}";
+        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        assertEquals(new ArrayList<String>(){{add("parser.NewClass");}}, dependencies);
+    }
 }
