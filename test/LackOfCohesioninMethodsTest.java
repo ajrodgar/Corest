@@ -9,7 +9,7 @@ public class LackOfCohesioninMethodsTest {
     
     @Test
     public void countMethodsinClassTest(){        
-        File file=new File("class.txt");
+        File file=new File("simpleClass.txt");
         assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file)); 
     }
 }

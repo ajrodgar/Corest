@@ -13,7 +13,7 @@ public class Player {
         board = new Board();
     }
 
-    public String getName() {
+    public String getName() throws Exception{
         return name;
     }
 

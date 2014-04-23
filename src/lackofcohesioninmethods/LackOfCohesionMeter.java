@@ -11,8 +11,10 @@ public class LackOfCohesionMeter {
 
     public static int countMethodsInClass(File file) {
         String stringFile=FileStringizer.fileToString(file);
-        
-        return stringFile.split("\\) \\{").length;
-    }
+        stringFile=stringFile.replace(" ","");
+        int exceptionMethods= stringFile.split("\\)throws").length - 1;
+        return (stringFile.split("\\)\\{").length - 1)+exceptionMethods;
+    }    
+    
     
 }
