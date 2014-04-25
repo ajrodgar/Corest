@@ -1,6 +1,7 @@
 package classDependencies;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,7 +19,9 @@ public class classDependenciesTest {
                         "public interface ExpressionFactory {\n" +
                         "    public Expression build(Token token);\n" +
                         "}";
-        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
+        ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
+        ClassDependenciesEvaluator classDependencyEvaluator;
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
@@ -32,7 +35,9 @@ public class classDependenciesTest {
                         "public interface ExpressionFactory {\n" +
                         "    public Factory build(Token token);\n" +
                         "}";
-        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
+        ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
+        ClassDependenciesEvaluator classDependencyEvaluator;
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("evaluator.Factory");}}, dependencies);       
     }
@@ -45,14 +50,22 @@ public class classDependenciesTest {
                         "    return new NewClass();"+
                         "}";
         ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
-        ClassDependenciesEvaluator classDependencyEvaluator = new ClassDependenciesEvaluator();
+        ClassDependenciesEvaluator classDependencyEvaluator;
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
         ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
         assertEquals(new ArrayList<String>(){{add("parser.NewClass");}}, dependencies);
     }
 
-    private static class ProjectPackagesInformation {
+    private class ProjectPackagesInformation {
         public ProjectPackagesInformation() {
             
+        }
+        
+        public HashMap<String,String> loadClasses(){
+            HashMap<String,String> projectClasses = new HashMap<>();
+            projectClasses.put("parser.NewClass","parser");
+            projectClasses.put("parser.ExpressionFactory","parser");
+            return projectClasses;
         }
     }
 }
