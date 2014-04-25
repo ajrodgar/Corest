@@ -31,8 +31,18 @@ public class ClassDependenciesEvaluator {
         Scanner scanner = new Scanner(file);
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
-            if(line.contains("import"))
-                dependencies.add(getClassName(line));
+            if(line.contains("import")){
+                if(line.contains("*")){
+                    for (String className : getClassesFromPackage(getPackageNameFromLine(line))) {
+                        dependencies.add(className);
+                    }
+                }else{
+                    dependencies.add(getClassName(line));
+                }
+            }
+                
+                
+              
         }
     }
 
@@ -72,6 +82,11 @@ public class ClassDependenciesEvaluator {
     private String getClassFromHashMap(String projectClass){
         String[] name = projectClass.split("\\.");
         return name[name.length-1];
+    }
+    
+    private String getPackageNameFromLine(String line){
+        String packageName = line.split(" ")[1];
+        return packageName.substring(0, packageName.length()-3);
     }
     
 }
