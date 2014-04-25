@@ -9,6 +9,8 @@ public class Player {
 
     
     private String name;private Board board;
+	private String x =          new String("asdasdsad");
+	private String public protected chachipiruli atributo = new LoQueSea();
 
 
     public Player(String name) { 
@@ -16,6 +18,12 @@ public class Player {
 	}
         for(){
         }
+	while(){
+	}
+	try{
+	}
+	catch(Exception e){
+	}
         this.name = name;
         board = new Board();
     }
@@ -31,4 +39,5 @@ public class Player {
     public void deployShip(Ship ship){
         board.deployShip(ship);
     }
+Person person = new Person();
 }

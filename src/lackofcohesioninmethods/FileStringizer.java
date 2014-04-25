@@ -1,6 +1,8 @@
 package lackofcohesioninmethods;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 public class FileStringizer {
     public static String fileToString(File file) {
@@ -36,6 +38,9 @@ public class FileStringizer {
             formatedFile = formatedFile.replace("{","{\n");
             formatedFile = formatedFile.replace(";",";\n");
             formatedFile = formatedFile.replace("}","\n}\n");
-            return formatedFile.replace(" ", "");
+            return formatedFile;
+    }
+    public static String deleteSpaces(String file){
+        return file.replace(" ", "");
     }
 }
