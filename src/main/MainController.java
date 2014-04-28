@@ -1,6 +1,8 @@
 package main;
 
+import analyzer.Analyzer;
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,5 +45,19 @@ public class MainController {
         return null;
     }
     
+    private ArrayList<File> generateDirectory(){
+        //TODO
+        return null;
+    }
+    
+    public MyResult analyze(String analyzerToUse, String fileTxt) throws Exception{
+        Analyzer analyzer;
+        Class<?> c;
+        c = Class.forName("analyzer."+analyzerToUse);
+        Constructor<?> cons = c.getConstructor(String.class);
+        Analyzer a = (Analyzer) cons.newInstance(fileTxt);
+       
+        return a.getResult();    
+    }
     
 }
