@@ -1,9 +1,8 @@
 package corest.rank;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public interface DependencyDictionary {
     
-    public HashMap<String, ArrayList<String>> getDependentClasses();
+    public ArrayList<String> getDependentClasses(String file, String className);
 }
