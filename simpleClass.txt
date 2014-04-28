@@ -9,22 +9,22 @@ public class Player {
 
     
     private String name;private Board board;
-	private String x =          new String("asdasdsad");
+	private String palabra =          new String("asdasdsad");
 	private String public protected chachipiruli atributo = new LoQueSea();
 
 
     public Player(String name) { 
-	if(x == 0){ return;
+if(palabra == 0){ return;
 	}
         for(){
         }
 	while(){
 	}
 	try{
+}
+catch(Exception e){
 	}
-	catch(Exception e){
-	}
-        this.name = name;
+        this.name = "hola";
         board = new Board();
     }
 
