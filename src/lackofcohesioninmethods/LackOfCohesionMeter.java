@@ -71,7 +71,6 @@ public class LackOfCohesionMeter {
     }
     
     public static int attributeAccess(File file) {
-        ArrayList<String> attributes = identifyAttributes(file);
         int openedBlocks = 0;
         int aparitions = 0;
         String signature = "";
@@ -79,21 +78,12 @@ public class LackOfCohesionMeter {
         for (String line : prepareFileWithoutSpaces(file)) {
             if (line.contains("{")) openedBlocks++;
             if (line.contains("}")) openedBlocks--;
+            if (openedBlocks < 2) continue;
             
-            if (openedBlocks >= 2) {
-                if (isMethodLine(line)) signature = getMethodSignature(line);
-                else {
-                    for (String attribute : attributes) {
-                        if (signature.contains(attribute)) {
-                            if (line.contains("this." + attribute)) {
-                                aparitions++;
-                            }
-                        } else {
-                            if (line.contains(attribute)) {
-                                aparitions++;
-                            }
-                        }
-                    }
+            if (isMethodLine(line)) signature = getMethodSignature(line);
+            else {
+                for (String attribute : identifyAttributes(file)) {
+                    aparitions += getAttributeAparitions(attribute, signature, line);
                 }
             }
         }
@@ -104,5 +94,19 @@ public class LackOfCohesionMeter {
         int start = line.indexOf("(");
         int end = line.indexOf(")");
         return line.substring(start + 1, end);
+    }
+    
+    private static int getAttributeAparitions(String attribute, String signature, String line){
+        int aparitions = 0;
+        if (signature.contains(attribute)) {
+            if (line.contains("this." + attribute)) {
+                aparitions++;
+            }
+        } else {
+            if (line.contains(attribute)) {
+                aparitions++;
+            }
+        }
+        return aparitions;
     }
 }
