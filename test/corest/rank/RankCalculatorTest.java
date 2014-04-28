@@ -4,33 +4,31 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class RankCalculatorTest {
-    
+
     @Test
-    public void testValueRankCalculator() {
+    public void calculateValueWhenClassHasNoDependencies() {
         RankCalculator calculator = new RankCalculator();
-        assertEquals(0.15, calculator.calculate("AnotherTestClass", mockDictionary()), 0.001);
-    }
-    
-    private DependencyDictionary mockDictionary() {
-        DependencyDictionary dictionary = mock(DependencyDictionary.class);
-        when(dictionary.getDependentClasses()).thenReturn(dependencies());
-        return dictionary;
+        assertEquals(0.15, calculator.calculate("AnotherTestClass", dictionary), 0.001);
     }
 
-    private HashMap<String, ArrayList<String>> dependencies() {
-        HashMap<String, ArrayList<String>> dependencies = new HashMap<>();
-        dependencies.put("AnotherTestClass", new ArrayList<>());
-        dependencies.put("TestClass", list());
-        return dependencies;
+    @Test
+    public void calculateValueWhenClassDependsOnOneClassWithNoDependencies() {
+        RankCalculator calculator = new RankCalculator();
+        assertEquals(0.2775, calculator.calculate("TestClass", dictionary), 0.001);
     }
 
-    private static ArrayList<String> list() {
-        final ArrayList<String> list = new ArrayList<>();
-        list.add("AnotherTestClass");
-        return list;
-    }
+    private DependencyDictionary dictionary = new DependencyDictionary() {
+
+        @Override
+        public HashMap<String, ArrayList<String>> getDependentClasses() {
+            HashMap<String, ArrayList<String>> dependencies = new HashMap<>();
+            final ArrayList<String> list = new ArrayList<>();
+            list.add("AnotherTestClass");
+            dependencies.put("AnotherTestClass", new ArrayList<>());
+            dependencies.put("TestClass", list);
+            return dependencies;
+        }
+    };
 }
