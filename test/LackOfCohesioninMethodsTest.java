@@ -30,4 +30,10 @@ public class LackOfCohesioninMethodsTest {
         attributes.add("person");
         assertEquals(attributes, LackOfCohesionMeter.identifyAttributes((file)));
     }
+    
+    @Test
+    public void attributeAccessTest(){
+        File file = new File("simpleClass.txt");
+        assertEquals(7, LackOfCohesionMeter.attributeAccess((file)));
+    }
 }

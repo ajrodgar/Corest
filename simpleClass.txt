@@ -17,6 +17,7 @@ public class Player {
 if(palabra == 0){ return;
 	}
         for(){
+		palabra = 2;
         }
 	while(){
 	}
