@@ -21,8 +21,8 @@ public class classDependenciesTest {
                         "}";
         ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
         ClassDependenciesEvaluator classDependencyEvaluator;
-        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
-        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses());
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file, "parser.ExpressionFactory");
         assertEquals(new ArrayList<String>(){{add("evaluator.Expression");}}, dependencies);       
     }
     
@@ -37,8 +37,8 @@ public class classDependenciesTest {
                         "}";
         ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
         ClassDependenciesEvaluator classDependencyEvaluator;
-        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
-        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses());
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file, "parser.ExpressionFactory");
         assertEquals(new ArrayList<String>(){{add("evaluator.Factory");}}, dependencies);       
     }
     
@@ -51,8 +51,8 @@ public class classDependenciesTest {
                         "}";
         ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
         ClassDependenciesEvaluator classDependencyEvaluator;
-        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
-        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses());
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file, "parser.ExpressionFactory");
         assertEquals(new ArrayList<String>(){{add("parser.NewClass");}}, dependencies);
     }
     
@@ -67,8 +67,8 @@ public class classDependenciesTest {
                         "}";
         ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
         ClassDependenciesEvaluator classDependencyEvaluator;
-        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses(), "ExpressionFactory.java");
-        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file);
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses());
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file, "parser.ExpressionFactory");
         assertEquals(new ArrayList<String>(){{add("evaluator.Dictionary");add("evaluator.Factory");}}, dependencies);       
     }
     
