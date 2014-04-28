@@ -2,6 +2,7 @@ package counters;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,29 +10,24 @@ import java.io.IOException;
 public class CodeLineCounter {
     private int linesCounter;
     private int commentCounter;
-    private boolean insideCommentBlock;
-    private final String lineCommentMark = "//";
-    private final String blockCommentStartMark = "/*";
-    private final String blockCommentFinalMark = "*/";
-    
+    private boolean insideCommentBlock;    
 
-    public CodeLineCounter(String route) throws IOException {
-        linesCounter = 0;
-        commentCounter = 0;
-        insideCommentBlock = false;
+    public CodeLineCounter(File route) throws IOException {
+        this.linesCounter = 0;
+        this.commentCounter = 0;
+        this.insideCommentBlock = false;
         count(route);
     }
 
-    private int count (String route) throws FileNotFoundException, IOException{
+    private int count (File route) throws FileNotFoundException, IOException{
         BufferedReader reader = null;
         String line;
         try {
             reader = new BufferedReader(new FileReader(route));
             while ((line = reader.readLine()) != null) {
                 linesCounter++;
-                if (isCommentLine(line))  commentCounter++;
-                if (isCommentBlock(line)) commentCounter++;
-                
+                if (!insideCommentBlock) if (isStartingCommentBlock(line))  commentCounter++;
+                if (insideCommentBlock)  if (isFinishingCommentBlock(line)) commentCounter++;
             }
             reader.close();
         } 
@@ -55,13 +51,30 @@ public class CodeLineCounter {
         return linesCounter;
     }
     
+    private boolean isStartingCommentBlock(String line){
+        for (int i = 0; i < line.length(); i++) {
+            if (line.charAt (i) == '/' && (i+1 < line.length())){
+                switch (line.charAt(i+1)){
+                    case ('/'):
+                        return true;
+                    case ('*'):
+                        insideCommentBlock = true;
+                        return false;
+                }   
+            }
+        }
+        return false;
+    }
 
-    private boolean isCommentLine(String line){
-        return line.contains(lineCommentMark);
+    private boolean isFinishingCommentBlock(String line) {
+        if (line.contains("*/")) {
+             insideCommentBlock = false;
+             return true;
+        }
+        return false;
     }
     
-    private boolean isCommentBlock(String line){
-        return line.contains(blockCommentStartMark);
-    }
+    
 }
+
 

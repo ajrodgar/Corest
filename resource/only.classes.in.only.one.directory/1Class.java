@@ -1,7 +1,9 @@
-Hola esto es una 
-prueba para saber cuantas líneas tiene
-este finchero.
-el perro de san roque no tiene rabo
-ramón ramierz se lo ha robado
-// this is a comment and i hate it.
+/*Hola esto es una
+prueba para saber cuantas*/ líneas tiene
+este finchero.*/
+el perro de san roque no tiee rabo
+ramón ramirez se lo ha robado
+// this is a //comment and i hate it.
+// this is a //comment and i hate it.
+dslfknsdlfnsldfnslnflsjdnfljsndfljsn /
 /* this is other kind of comment */
