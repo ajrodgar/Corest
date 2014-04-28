@@ -11,22 +11,23 @@ public class LackOfCohesionMeter {
         String[] lines = stringFile.split("\n");
         int numberOfMethods = 0;
         for (String line : lines) {
-            numberOfMethods += processLine(line);
+            if(isMethodLine(line))numberOfMethods++;
         }
         return numberOfMethods;
     }
 
-    private static int processLine(String line) {
+    private static boolean isMethodLine(String line) {
+        line = line.trim();
         if (line.startsWith("if(") || line.startsWith("for(") || line.startsWith("while(") || line.startsWith("switch(") || line.startsWith("catch(")) {
-            return 0;
+            return false;
         }
-        if (line.contains("){") || line.contains(")throws")) {
-            return 1;
+        else if (line.contains("){") || line.contains(")throws")) {
+            return true;
         }
-        return 0;
+        return false;
     }
 
-    public static ArrayList<String> getLineAttributes(File file) {
+    private static ArrayList<String> getLineAttributes(File file) {
         String code = FileStringizer.format(FileStringizer.fileToString(file));
         String[] lines = code.split("\n");
         ArrayList<String> attributes = new ArrayList<>();
@@ -45,10 +46,14 @@ public class LackOfCohesionMeter {
         }
         return attributes;
     }
+    
+    public static int countAttributes(File file){
+        return getLineAttributes(file).size();
+    }
 
-    public static ArrayList<String> identifyAttributes(ArrayList<String> attributeLines) {
+    public static ArrayList<String> identifyAttributes(File file) {
         ArrayList<String> attributes = new ArrayList<>();
-        for (String line : attributeLines) {
+        for (String line : getLineAttributes(file)) {
             if (line.contains("=")) {
                 attributes.add(line.substring(0, line.indexOf("=")).trim().substring(line.substring(0, line.indexOf("=")).trim().lastIndexOf(" ") + 1, line.substring(0, line.indexOf("=")).trim().length()));
             } else {
@@ -73,7 +78,7 @@ public class LackOfCohesionMeter {
                 openedBlocks--;
             }
             if (openedBlocks >= 2) {
-                if (processLine(line) == 1) {
+                if (isMethodLine(line)) {
                     int inicio = line.indexOf("(");
                     int fin = line.indexOf(")");
                     signature = line.substring(inicio + 1, fin);
