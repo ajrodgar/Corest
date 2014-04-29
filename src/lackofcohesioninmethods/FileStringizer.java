@@ -24,7 +24,6 @@ public class FileStringizer {
         return fileString;
     }
     
-    
     private static String format(String file){
             String formatedFile = file.toString();
             formatedFile = formatedFile.replace("{","{\n");

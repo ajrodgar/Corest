@@ -73,7 +73,7 @@ public class LackOfCohesionMeter {
             }
             else {
                 for (String attribute : identifyAttributes(file)) {
-                    if(isAttributedUsed(attribute, methodParameters, line)) attributeAparitions++;
+                    if(isAttributeUsed(attribute, methodParameters, line)) attributeAparitions++;
                 }
             }
         }
@@ -84,7 +84,7 @@ public class LackOfCohesionMeter {
         return line.substring(line.indexOf("(") + 1, line.indexOf(")"));
     }
     
-    private static boolean isAttributedUsed(String attribute, String parameters, String line){
+    private static boolean isAttributeUsed(String attribute, String parameters, String line){
         if (attributeIsEqualToParameter(parameters, attribute)) 
             return line.contains("this." + attribute);
         return (line.contains(attribute));
