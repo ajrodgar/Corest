@@ -4,17 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Home | Flat Theme</title>
+    <title>Home | Corest</title>
+    <meta name="author" content="ULPGC">
+    <meta name="description" content="">
+
+    <!-- Stylesheet -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/font-awesome.min.css" rel="stylesheet">
     <link href="static/css/prettyPhoto.css" rel="stylesheet">
     <link href="static/css/animate.css" rel="stylesheet">
     <link href="static/css/main.css" rel="stylesheet">
+
     <!--[if lt IE 9]>
     <script src="static/js/html5shiv.js"></script>
     <script src="static/js/respond.min.js"></script>
     <![endif]-->
+
     <link rel="shortcut icon" href="static/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144"
           href="static/images/ico/apple-touch-icon-144-precomposed.png">
@@ -63,15 +68,17 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="carousel-content center centered">
+				<form id="analyze-form">
                                 <h2 class="animation animated-item-1">Lorem ipsum dolor sit amet</h2>
                                 <br>
                                 <p class="boxed animation animated-item-2">Enter the repository url from Github or Bitbucket to start:</p>
                                 <br>
                                 <div class="col-md-4 col-md-offset-4">
-                                    <input type="text" placeholder="http://" class="form-control">
+                                    <input type="url" placeholder="http://" class="form-control" name="url">
                                 </div>
                                 <div class="clearfix"></div>
                                 <input type="submit" class="btn btn-lg btn-success" value="Analyze now">
+				</form>
                             </div>
                         </div>
                     </div>
@@ -89,6 +96,33 @@
     </a>
 </section>
 <!--/#main-slider-->
+
+<section id="wait-message" class="no-margin">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <h3>We are analyzing your source reposotiry. This will take some time. Please wait.</h3>
+                <i class="icon icon-refresh icon-spin"></i>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <p>If you do not want to wait, give us your email and will notify you when ready.</p>
+
+                 <div class="col-lg-6 col-lg-offset-3">
+                    <div class="input-group">
+                      <input type="email" class="form-control">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="services" class="emerald">
     <div class="container">
@@ -294,7 +328,7 @@
 </footer>
 <!--/#footer-->
 
-<script src="static/js/jquery.js"></script>
+<script src="static/js/jquery-1.11.0.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/main.js"></script>
 </body>

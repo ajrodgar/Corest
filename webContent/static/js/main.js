@@ -26,4 +26,18 @@ jQuery(function($) {
 		}, 500);
 	});	
 
+
+	// Form Submit
+	$('#analyze-form').submit(function(event){
+		event.preventDefault();
+
+		showWaitingMessage();
+
+		return false;
+	});
+
+	function showWaitingMessage(){
+		$("#wait-message").removeClass("hide");
+		$("#main-slider").fadeOut();
+	}
 });

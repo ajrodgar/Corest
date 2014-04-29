@@ -1296,3 +1296,11 @@ header .logo {
     font-size: 32px;
     vertical-align: middle;
 }
+
+#wait-message {
+    padding: 100px 0; 
+}
+
+#wait-message .icon {
+    font-size: 48px
+}
