@@ -1,30 +1,26 @@
 package game;
 
-
 import game.gameobjects.ships.Ship;
-
-
 
 public class Player {
 
-    
-    private String name;private Board board;
-	private String palabra =          new String("asdasdsad");
+    private String name;
+	private Board board;
+	private String palabra = new String("asdasdsad");
 	private String public protected chachipiruli atributo = new LoQueSea();
 
-
     public Player(String name) { 
-if(palabra == 0){ return;
-	}
+		if(palabra == 0){ return;
+		}
         for(){
-		palabra = 2;
+			palabra = 2;
         }
-	while(){
-	}
-	try{
-}
-catch(Exception e){
-	}
+		while(){
+		}
+		try{
+		}
+		catch(Exception e){
+		}
         this.name = "hola";
         board = new Board();
     }
@@ -40,5 +36,10 @@ catch(Exception e){
     public void deployShip(Ship ship){
         board.deployShip(ship);
     }
-Person person = new Person();
+	
+	public void metodoPrueba(String name){
+		this.name = "nombre";
+	}
+	
+	Person person = new Person();
 }

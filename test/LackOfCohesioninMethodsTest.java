@@ -10,7 +10,7 @@ public class LackOfCohesioninMethodsTest {
     
     public void countMethodsInClassTest() {
         File file = new File("simpleClass.txt");
-        assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file));
+        assertEquals(5, LackOfCohesionMeter.countMethodsInClass(file));
     }
 
     @Test
@@ -34,7 +34,7 @@ public class LackOfCohesioninMethodsTest {
     @Test
     public void attributeAccessTest(){
         File file = new File("simpleClass.txt");
-        assertEquals(7, LackOfCohesionMeter.attributeAccess((file)));
-        assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file));
+        assertEquals(8, LackOfCohesionMeter.attributeAccess((file)));
+        assertEquals(5, LackOfCohesionMeter.countMethodsInClass(file));
     }
 }

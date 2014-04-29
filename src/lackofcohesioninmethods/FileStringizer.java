@@ -33,18 +33,8 @@ public class FileStringizer {
             return formatedFile;
     }
     
-    private static String deleteSpaces(String file){
-        return file.replace(" ", "");
-    }
-    
-    public static String[] prepareFileWithoutSpaces(File file){
-        String stringFile = format(fileToString(file));
-        stringFile = deleteSpaces(stringFile);
-        return stringFile.split("\n");
-    }
-    
     public static String[] prepareFile(File file){
-        String code = FileStringizer.format(FileStringizer.fileToString(file));
+        String code = format(FileStringizer.fileToString(file));
         return code.split("\n");
     }
 }
