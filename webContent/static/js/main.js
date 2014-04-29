@@ -32,6 +32,17 @@ jQuery(function($) {
 		event.preventDefault();
 
 		showWaitingMessage();
+		var url = $('form input[type="url"]').val();
+
+		$.ajax({url: "http://127.0.0.1:8080", 
+				type: "POST", 
+				data: JSON.stringify({"url": url}), 
+				dataType: "json"})
+		.done(function() {
+			// TODO: Redirect to analysis result
+		}).fail(function(request, status, error) {
+			console.log( "Theare was an error when processing your request: ");
+		});
 
 		return false;
 	});

@@ -73,25 +73,16 @@
             </div>
         </div>
     </div>
-</section><!--/#title-->     
+</section><!--/#title-->
 
 
-<section id="stats-main" class="stats">
+<section id="analysis-content">
     <div class="container">
-        <div class="row">
+        <div class="row stats">
             <div class="col-md-6 col-md-offset-4">
                 <h3>Rank</h3>
                 <ul class="rank">
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
-                    <li>Lorem ipsum dolor sit amet <span class="label label-success">42</span></li>
+                    
                 </ul>
             </div>
         </div>
@@ -218,5 +209,20 @@
 <script src="static/js/jquery-1.11.0.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/main.js"></script>
+
+<!-- Backbone -->
+<script src="static/js/underscore-min.js"></script>
+<script src="static/js/backbone-min.js"></script>
+<script src="static/js/app/analysis_app.js"></script>
+<script>
+    var app = app || {};
+
+    $(function () {
+        'use strict';
+
+        new app.AnalysisView();
+    });
+</script>
+
 </body>
 </html>
