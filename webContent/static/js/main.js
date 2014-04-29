@@ -38,6 +38,6 @@ jQuery(function($) {
 
 	function showWaitingMessage(){
 		$("#wait-message").removeClass("hide");
-		$("#main-slider").fadeOut();
+		$("#main-slider").slideUp();
 	}
 });

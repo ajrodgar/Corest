@@ -93,6 +93,10 @@ body > section {
     padding: 50px 0;
 }
 
+body > section#title {
+    padding: 25px 0 20px 0;
+}
+
 .turquoise,
 .green-sea,
 .sun-flower,
@@ -1297,10 +1301,11 @@ header .logo {
     vertical-align: middle;
 }
 
-#wait-message {
+section#wait-message {
     padding: 100px 0; 
 }
 
-#wait-message .icon {
+section#wait-message .icon {
     font-size: 48px
 }
+

@@ -1,0 +1,10 @@
+
+.stats ul.rank {
+    list-style-type: none;
+    font-size: 22px;
+    padding: 0;
+}
+
+.stats .rank li{
+	margin: 5px 0;
+}
