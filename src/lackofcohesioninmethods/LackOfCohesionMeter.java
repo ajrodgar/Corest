@@ -7,6 +7,7 @@ public class LackOfCohesionMeter {
     private static int numberOfMethods = 0;
 
     public static int countMethodsInClass(File file) {
+        attributeAccess(file);
         return numberOfMethods;
     }
    
@@ -58,6 +59,7 @@ public class LackOfCohesionMeter {
     }
     
     public static int attributeAccess(File file) {
+        numberOfMethods = 0;
         int openedBlocks = 0;
         int attributeAparitions = 0;
         String methodParameters = "";
@@ -95,7 +97,7 @@ public class LackOfCohesionMeter {
         return (double) (1 - (double)attributeAccess / (numberOfMethods * countAttributes(file)));
     }
 
-    public static boolean attributeIsEqualToParameter(String methodParameters, String attribute) {
+    private static boolean attributeIsEqualToParameter(String methodParameters, String attribute) {
         String[] parameters = methodParameters.split(",");
         for (String parameter : parameters) {
             if(parameter.substring(parameter.lastIndexOf(" ")+1, parameter.length()).equals(attribute)){
