@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class LackOfCohesioninMethodsTest {
 
-    @Test
+    
     public void countMethodsInClassTest() {
         File file = new File("simpleClass.txt");
         assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file));
@@ -35,5 +35,6 @@ public class LackOfCohesioninMethodsTest {
     public void attributeAccessTest(){
         File file = new File("simpleClass.txt");
         assertEquals(7, LackOfCohesionMeter.attributeAccess((file)));
+        assertEquals(4, LackOfCohesionMeter.countMethodsInClass(file));
     }
 }

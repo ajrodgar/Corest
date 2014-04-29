@@ -4,21 +4,12 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class LackOfCohesionMeter {
-
+    private static int numberOfMethods = 0;
+    
     public static int countMethodsInClass(File file) {
-        int numberOfMethods = 0;
-        for (String line : prepareFileWithoutSpaces(file)) {
-            if(isMethodLine(line))numberOfMethods++;
-        }
         return numberOfMethods;
     }
-    
-    private static String[] prepareFileWithoutSpaces(File file){
-        String stringFile = FileStringizer.format(FileStringizer.fileToString(file));
-        stringFile = FileStringizer.deleteSpaces(stringFile);
-        return stringFile.split("\n");
-    }
-
+   
     private static boolean isMethodLine(String line) {
         line = line.trim();
         if (line.startsWith("if(") || line.startsWith("for(") || line.startsWith("while(") || line.startsWith("switch(") || line.startsWith("catch("))
@@ -32,18 +23,13 @@ public class LackOfCohesionMeter {
         ArrayList<String> attributes = new ArrayList<>();
         int blockCounter = 0;
         
-        for (String line : prepareFile(file)) {
+        for (String line : FileStringizer.prepareFile(file)) {
             if (line.length() == 0) continue;
             if (line.contains("{")) blockCounter++;
             else if (line.contains("}")) blockCounter--;
             else if (blockCounter == 1) attributes.add(line);
         }
         return attributes;
-    }
-    
-    private static String[] prepareFile(File file){
-        String code = FileStringizer.format(FileStringizer.fileToString(file));
-        return code.split("\n");
     }
     
     public static int countAttributes(File file){
@@ -72,22 +58,25 @@ public class LackOfCohesionMeter {
     
     public static int attributeAccess(File file) {
         int openedBlocks = 0;
-        int aparitions = 0;
-        String signature = "";
+        int attributeAparitions = 0;
+        String methodSignature = "";
 
-        for (String line : prepareFileWithoutSpaces(file)) {
+        for (String line : FileStringizer.prepareFileWithoutSpaces(file)) {
             if (line.contains("{")) openedBlocks++;
             if (line.contains("}")) openedBlocks--;
             if (openedBlocks < 2) continue;
             
-            if (isMethodLine(line)) signature = getMethodSignature(line);
+            if (isMethodLine(line)){
+                methodSignature = getMethodSignature(line);
+                numberOfMethods++;
+            }
             else {
                 for (String attribute : identifyAttributes(file)) {
-                    aparitions += getAttributeAparitions(attribute, signature, line);
+                    if(isAttributedUsed(attribute, methodSignature, line)) attributeAparitions++;
                 }
             }
         }
-        return aparitions;
+        return attributeAparitions;
     }
     
     private static String getMethodSignature(String line){
@@ -96,17 +85,16 @@ public class LackOfCohesionMeter {
         return line.substring(start + 1, end);
     }
     
-    private static int getAttributeAparitions(String attribute, String signature, String line){
-        int aparitions = 0;
+    private static boolean isAttributedUsed(String attribute, String signature, String line){
         if (signature.contains(attribute)) {
             if (line.contains("this." + attribute)) {
-                aparitions++;
+                return true;
             }
         } else {
             if (line.contains(attribute)) {
-                aparitions++;
+                return true;
             }
         }
-        return aparitions;
+        return false;
     }
 }

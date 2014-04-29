@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 public class FileStringizer {
-    public static String fileToString(File file) {
+    private static String fileToString(File file) {
         FileReader fr = null;
         BufferedReader br = null;
         String fileString="";
@@ -20,27 +20,31 @@ public class FileStringizer {
         }
         catch(Exception e){
            e.printStackTrace();
-        }finally{
-           try{                   
-              if( null != fr ){  
-                 fr.close();    
-              }
-           }catch (Exception e2){
-              e2.printStackTrace();
-           }
         }
         return fileString;
     }
     
     
-    public static String format(String file){
+    private static String format(String file){
             String formatedFile = file.toString();
             formatedFile = formatedFile.replace("{","{\n");
             formatedFile = formatedFile.replace(";",";\n");
             formatedFile = formatedFile.replace("}","\n}\n");
             return formatedFile;
     }
-    public static String deleteSpaces(String file){
+    
+    private static String deleteSpaces(String file){
         return file.replace(" ", "");
+    }
+    
+    public static String[] prepareFileWithoutSpaces(File file){
+        String stringFile = format(fileToString(file));
+        stringFile = deleteSpaces(stringFile);
+        return stringFile.split("\n");
+    }
+    
+    public static String[] prepareFile(File file){
+        String code = FileStringizer.format(FileStringizer.fileToString(file));
+        return code.split("\n");
     }
 }
