@@ -7,7 +7,7 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        ControlPanel test = new ControlPanel("https://github.com/ajrodgar/Corest.git");
+        ControlPanel test = new ControlPanel("https://github.com/ajrodgar/Corest.git", "develop");
         
         ArrayList<MyResult> analyzerTest= test.getAnalyzerTest();
         

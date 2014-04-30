@@ -21,8 +21,13 @@ public class MainController {
 
     public MainController(String gitURL) {
         this.gitURL = gitURL;
-        //this.branch = "master";
-        this.branch = "develop";
+        this.branch = "master";
+        this.getFiles();
+    }
+    
+    public MainController(String gitURL, String branch) {
+        this.gitURL = gitURL;
+        this.branch = branch;
         this.getFiles();
     }
     
