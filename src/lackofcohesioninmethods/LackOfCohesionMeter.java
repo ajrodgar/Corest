@@ -12,13 +12,10 @@ public class LackOfCohesionMeter {
     }
    
     private static boolean isMethodLine(String line) {
-        line = line.trim();
-        line = line.replace(" ", "");
+        line = line.trim().replace(" ", "");
         if (line.startsWith("if(") || line.startsWith("for(") || line.startsWith("while(") || line.startsWith("switch(") || line.startsWith("catch("))
             return false;
-        else if (line.contains("){") || line.contains(")throws"))
-            return true;
-        return false;
+        return line.contains("){") || line.contains(")throws");
     }
 
     private static ArrayList<String> extractAttributeLines(File file) {
@@ -31,7 +28,7 @@ public class LackOfCohesionMeter {
             else if (line.contains("}")) blockCounter--;
             else if (blockCounter == 1) attributes.add(line);
         }
-        return attributes;
+        return attributes; 
     }
     
     public static int countAttributes(File file){
@@ -40,12 +37,10 @@ public class LackOfCohesionMeter {
     
     public static ArrayList<String> identifyAttributeNames(File file) {
         ArrayList<String> attributes = new ArrayList<>();
-        
         for (String line : extractAttributeLines(file)) {
             if (line.contains("=")) attributes.add(getInitializedAttributeName(line));
             else attributes.add(getAttributeName(line));
         }
-        
         return attributes;
     }
     
@@ -74,9 +69,8 @@ public class LackOfCohesionMeter {
                 numberOfMethods++;
             }
             else {
-                for (String attribute : identifyAttributeNames(file)) {
+                for (String attribute : identifyAttributeNames(file)) 
                     if(isAttributeUsed(attribute, methodParameters, line)) attributeAparitions++;
-                }
             }
         }
         return attributeAparitions;
@@ -98,11 +92,9 @@ public class LackOfCohesionMeter {
     }
 
     private static boolean attributeIsEqualToParameter(String methodParameters, String attribute) {
-        String[] parameters = methodParameters.split(",");
-        for (String parameter : parameters) {
-            if(parameter.substring(parameter.lastIndexOf(" ")+1, parameter.length()).equals(attribute)){
+        for (String parameter : methodParameters.split(",")) {
+            if(parameter.substring(parameter.lastIndexOf(" ")+1, parameter.length()).equals(attribute))
                return true;
-            }
         }
         return false;
     }
