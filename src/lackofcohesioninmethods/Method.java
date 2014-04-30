@@ -59,7 +59,6 @@ public class Method {
     
     private boolean checkLine(String line, String attribute) {
         line = line.substring(line.indexOf(attribute));
-        if (Character.isAlphabetic(line.charAt(attribute.length())+1)) return false;
-        return true;
+        return !(Character.isAlphabetic(line.charAt(attribute.length())+1));
     }
 }
