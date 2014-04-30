@@ -15,15 +15,13 @@ public class CyclomaticComplexity {
     public int getComplexity(String source) {
 
         int complexity = 1;
-
-        String words = "";
-
+        String words;
         StringTokenizer stTokenizer = new StringTokenizer(source);
 
         while (stTokenizer.hasMoreTokens()) {
             words = stTokenizer.nextToken();
-            for (int i = 0; i < keywords.length; i++) {
-                if (keywords[i].equals(words)) {
+            for (String keyword : keywords) {
+                if (words.contains(keyword)) {
                     complexity++;
                 }
             }

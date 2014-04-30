@@ -1,5 +1,6 @@
+package CyclomaticComplexity;
 
-import CyclomaticComplexity.CyclomaticComplexity;
+
 import java.io.File;
 import org.junit.Test;
 import org.junit.Assert;
@@ -30,7 +31,9 @@ public class CyclomaticComplexityTest {
         
         Assert.assertEquals(6, cyclo.getComplexity(cyclo.getFile("Ejemplo1")));
         
-        Assert.assertEquals(4, cyclo.getComplexity(cyclo.getFile("Ejemplo2")));
+        Assert.assertEquals(17, cyclo.getComplexity(cyclo.getFile("Ejemplo2")));
+        
+         Assert.assertEquals(4, cyclo.getComplexity(cyclo.getFile("Ejemplo3")));
       
     }
 }
