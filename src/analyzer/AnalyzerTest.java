@@ -1,7 +1,5 @@
 package analyzer;
 
-import main.MyResult;
-
 
 public class AnalyzerTest implements Analyzer{
     String source;
