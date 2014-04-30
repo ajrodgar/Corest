@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class nuevo {
+public class Ejemplo1 {
 
     public static void main(String args[]) throws IOException {
        
@@ -20,9 +20,7 @@ public class nuevo {
             max = z;
         } else {
             max = y;
-        }
-        
+        }        
         System.out.println("El máximo es " + max);
     }
-
 }

@@ -28,7 +28,9 @@ public class CyclomaticComplexityTest {
         
         CyclomaticComplexity cyclo = new CyclomaticComplexity();
         
-        Assert.assertEquals(6, cyclo.getComplexity(cyclo.getFile()));
+        Assert.assertEquals(6, cyclo.getComplexity(cyclo.getFile("Ejemplo1")));
+        
+        Assert.assertEquals(4, cyclo.getComplexity(cyclo.getFile("Ejemplo2")));
       
     }
 }

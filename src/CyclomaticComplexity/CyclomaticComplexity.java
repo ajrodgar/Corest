@@ -31,11 +31,11 @@ public class CyclomaticComplexity {
         return complexity;
     }
     
-    public String getFile() {             
+    public String getFile(String filePath) {             
                 
 		String line = null;
 		try {
-			String fileName = "src/CyclomaticComplexity/nuevo.java";
+			String fileName = "src/CyclomaticComplexity/"+filePath+".java";
 			FileReader fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
                         
