@@ -20,13 +20,11 @@ public class LackOfCohesionMeter {
 
     private static ArrayList<String> extractAttributeLines(File file) {
         ArrayList<String> attributes = new ArrayList<>();
-        int blockCounter = 0;
-        
+        int openedBlocks = 0;
         for (String line : FileStringizer.prepareFile(file)) {
-            if (line.length() == 0) continue;
-            if (line.contains("{")) blockCounter++;
-            else if (line.contains("}")) blockCounter--;
-            else if (blockCounter == 1) attributes.add(line);
+            if (line.contains("{")) openedBlocks++;
+            else if (line.contains("}")) openedBlocks--;
+            else if (openedBlocks == 1 && line.length() > 0) attributes.add(line);
         }
         return attributes; 
     }
@@ -67,11 +65,9 @@ public class LackOfCohesionMeter {
             if (isMethodLine(line)){
                 methodParameters = getMethodParameters(line);
                 numberOfMethods++;
+                continue;
             }
-            else {
-                for (String attribute : identifyAttributeNames(file)) 
-                    if(isAttributeUsed(attribute, methodParameters, line)) attributeAparitions++;
-            }
+            attributeAparitions += attributesOcurrences(file, methodParameters, line);
         }
         return attributeAparitions;
     }
@@ -81,14 +77,11 @@ public class LackOfCohesionMeter {
     }
     
     private static boolean isAttributeUsed(String attribute, String parameters, String line){
-        if (attributeIsEqualToParameter(parameters, attribute)) 
-            return line.contains("this." + attribute);
-        return (line.contains(attribute));
+        return attributeIsEqualToParameter(parameters, attribute) ? line.contains("this." + attribute) : (line.contains(attribute));
     }
     
     public static double lackOfCohesion(File file){
-        int attributeAccess = attributeAccess(file);
-        return (double) (1 - (double)attributeAccess / (numberOfMethods * countAttributes(file)));
+        return (double) (1 - (double)attributeAccess(file) / (numberOfMethods * countAttributes(file)));
     }
 
     private static boolean attributeIsEqualToParameter(String methodParameters, String attribute) {
@@ -97,5 +90,12 @@ public class LackOfCohesionMeter {
                return true;
         }
         return false;
+    }
+
+    private static int attributesOcurrences(File file, String methodParameters, String line) {
+        int attributeOcurrences = 0;
+        for (String attribute : identifyAttributeNames(file)) 
+            if(isAttributeUsed(attribute, methodParameters, line)) attributeOcurrences++;
+        return attributeOcurrences;
     }
 }
