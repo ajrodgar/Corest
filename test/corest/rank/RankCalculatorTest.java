@@ -1,14 +1,14 @@
 package corest.rank;
 
-import java.util.ArrayList;
+import corest.classdependenciesevaluator.ClassDependenciesEvaluator;
 import java.util.HashMap;
 import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class RankCalculatorTest {
 
+    private static ClassDependenciesEvaluator evaluator;
     private final String anotherTestClass = "package corest.rank;\n"
             + "\n"
             + "public class AnotherTestClass {\n"
@@ -16,41 +16,36 @@ public class RankCalculatorTest {
             + "";
     private final String testClass = "package corest.rank;\n"
             + "\n"
-            + "public class TestClass {\n"
+            + "public class Trim {\n"
             + "    \n"
             + "    private AnotherTestClass object;\n"
             + "}\n"
             + "";
+    
+    @BeforeClass
+    public static void setUpClass() {
+        HashMap<String, String> map = new HashMap<>();
+        map.put("corest.rank.AnotherTestClass", "corest.rank");
+        map.put("corest.rank.Trim", "corest.rank");
+        evaluator = new ClassDependenciesEvaluator(map);
+    }
 
     @Test
     public void calculateValueWhenClassHasNoDependencies() {
-        RankCalculator calculator = new RankCalculator(fakeProject(), mockDictionary());
+        RankCalculator calculator = new RankCalculator(fakeProject(), evaluator);
         assertEquals(0.15, calculator.calculate("corest.rank.AnotherTestClass"), 0.001);
     }
 
     @Test
     public void calculateValueWhenClassDependsOnOneClassWithNoDependencies() {
-        RankCalculator calculator = new RankCalculator(fakeProject(), mockDictionary());
-        assertEquals(0.2775, calculator.calculate("corest.rank.TestClass"), 0.001);
+        RankCalculator calculator = new RankCalculator(fakeProject(), evaluator);
+        assertEquals(0.2775, calculator.calculate("corest.rank.Trim"), 0.001);
     }
     
     private HashMap<String, String> fakeProject() {
         HashMap<String, String> project = new HashMap<>();
         project.put("corest.rank.AnotherTestClass", anotherTestClass);
-        project.put("corest.rank.TestClass", testClass);
+        project.put("corest.rank.Trim", testClass);
         return project;
-    }
-
-    private DependencyDictionary mockDictionary() {
-        DependencyDictionary dictionary = mock(DependencyDictionary.class);
-        when(dictionary.getDependentClasses(anotherTestClass, "corest.rank.AnotherTestClass")).thenReturn(new ArrayList<>());
-        when(dictionary.getDependentClasses(testClass, "corest.rank.TestClass")).thenReturn(dependencies());
-        return dictionary;
-    }
-
-    private ArrayList<String> dependencies() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("AnotherTestClass");
-        return list;
     }
 }

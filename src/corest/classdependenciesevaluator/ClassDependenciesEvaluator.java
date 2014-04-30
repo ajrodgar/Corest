@@ -1,18 +1,14 @@
-package classDependencies;
+package corest.classdependenciesevaluator;
 
-import java.io.BufferedReader;
-import java.io.StringReader;
+import static corest.classdependenciesevaluator.NameFacilitator.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import static classDependencies.NameFacilitator.*;
 
 public class ClassDependenciesEvaluator {
     ArrayList<String> dependencies = new ArrayList<>();
     HashMap<String,String> projectClasses;
 
-    ClassDependenciesEvaluator(HashMap<String, String> projectClasses) {
+    public ClassDependenciesEvaluator(HashMap<String, String> projectClasses) {
         this.projectClasses = projectClasses;
     }
     
@@ -24,9 +20,8 @@ public class ClassDependenciesEvaluator {
 
 
     private void getImportDependencies(String classCode) {
-        Scanner scanner = new Scanner(classCode);
-        while(scanner.hasNextLine()){
-            String line = scanner.nextLine();
+        String data[] = classCode.split("\n");
+        for (String line : data) {
             if(line.contains("import")){
                 if(line.contains("*"))
                     for (String className : getClassesNamesFromPackage(getPackageNameFromImportLine(line), projectClasses))
@@ -35,6 +30,7 @@ public class ClassDependenciesEvaluator {
                     dependencies.add(getClassNameFromImportLine(line));
             }
         }
+        
     }
     
     private void getSamePackageDependencies(String classCode, String className) {

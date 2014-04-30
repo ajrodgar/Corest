@@ -1,8 +1,7 @@
-package classDependencies;
+package corest.classdependenciesevaluator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class NameFacilitator {
 
@@ -21,14 +20,13 @@ public class NameFacilitator {
     }
     
     protected static String getPackageNameFromPackageLine(String classCode) {
-        Scanner scanner = new Scanner(classCode);
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
+        String data[] = classCode.split("\n");
+        for (String line : data) {
             if (line.contains("package")) {
                 return line.split(" ")[1].split(";")[0];
             }
         }
-        return null;
+        return "";
     }
 
     protected static String getPackageNameFromImportLine(String line) {

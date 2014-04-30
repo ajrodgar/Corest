@@ -1,13 +1,14 @@
-package classDependencies;
+package corest.classdepdenciesevaluator;
 
+import corest.classdependenciesevaluator.ClassDependenciesEvaluator;
+import corest.classdependenciesevaluator.ProjectPackagesInformation;
 import java.util.ArrayList;
-import java.util.HashMap;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
-public class classDependenciesTest {
+public class ClassDependenciesTest {
     
-    public classDependenciesTest() {
+    public ClassDependenciesTest() {
     }
     
     @Test
