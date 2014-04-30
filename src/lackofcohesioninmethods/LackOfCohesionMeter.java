@@ -21,7 +21,7 @@ public class LackOfCohesionMeter {
         return false;
     }
 
-    private static ArrayList<String> getLineAttributes(File file) {
+    private static ArrayList<String> extractAttributeLines(File file) {
         ArrayList<String> attributes = new ArrayList<>();
         int blockCounter = 0;
         
@@ -35,13 +35,13 @@ public class LackOfCohesionMeter {
     }
     
     public static int countAttributes(File file){
-        return getLineAttributes(file).size();
+        return extractAttributeLines(file).size();
     }
     
-    public static ArrayList<String> identifyAttributes(File file) {
+    public static ArrayList<String> identifyAttributeNames(File file) {
         ArrayList<String> attributes = new ArrayList<>();
         
-        for (String line : getLineAttributes(file)) {
+        for (String line : extractAttributeLines(file)) {
             if (line.contains("=")) attributes.add(getInitializedAttributeName(line));
             else attributes.add(getAttributeName(line));
         }
@@ -74,7 +74,7 @@ public class LackOfCohesionMeter {
                 numberOfMethods++;
             }
             else {
-                for (String attribute : identifyAttributes(file)) {
+                for (String attribute : identifyAttributeNames(file)) {
                     if(isAttributeUsed(attribute, methodParameters, line)) attributeAparitions++;
                 }
             }

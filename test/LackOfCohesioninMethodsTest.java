@@ -28,7 +28,7 @@ public class LackOfCohesioninMethodsTest {
         attributes.add("palabra");
         attributes.add("atributo");
         attributes.add("person");
-        assertEquals(attributes, LackOfCohesionMeter.identifyAttributes((file)));
+        assertEquals(attributes, LackOfCohesionMeter.identifyAttributeNames((file)));
     }
     
     @Test
