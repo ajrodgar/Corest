@@ -41,13 +41,19 @@ public class Method {
     }
     
     public boolean isAccessing(String attribute){
-        if(getMethodParameters().contains(attribute))
+        if(isEqualParameter(attribute))
             attribute = "this."+attribute;
         for (String line : body.split("\n")) {
             if(line.contains(attribute)){
                 return checkLine(line, attribute);
             }
         }
+        return false;
+    }
+    
+    private boolean isEqualParameter(String attribute){
+        for (String parameter : getMethodParameters())
+            if(parameter.equals(attribute)) return true;
         return false;
     }
     

@@ -66,29 +66,24 @@ public class LackOfCohesionMeter {
             }
             if (openedBlocks < 2) continue;
             
-            if (isMethodLine(line)){
+            if (isMethodLine(line))
                 method.setSignature(line.trim());
-            }
-            else{
+            else
                 body+=line.trim()+"\n";
-            }
         }
         return methods;
     }
     
     public static double lackOfCohesion(File file){
-        int methods = countMethods(file);
-        int attributes = countAttributes(file);
         int accesses = 0;
         
          for (Method method : LackOfCohesionMeter.getMethods(file)) {
             for(String attribute : LackOfCohesionMeter.identifyAttributeNames(file)){
-                if(method.isAccessing(attribute)){
+                if(method.isAccessing(attribute))
                     accesses++;
-                }
             }
          }
          
-         return (double)(1 - (double)accesses / (methods * attributes));
+         return (double)(1 - (double)accesses / (countMethods(file) * countAttributes(file)));
     }
 }
