@@ -1,7 +1,7 @@
 package main;
 
 import analyzer.Analyzer;
-import analyzer.MyResult;
+import analyzer.results.MyResult;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.sql.Timestamp;

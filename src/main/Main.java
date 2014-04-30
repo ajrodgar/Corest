@@ -1,6 +1,6 @@
 package main;
 
-import analyzer.MyResult;
+import analyzer.results.MyResult;
 import java.util.ArrayList;
 
 public class Main {

@@ -1,5 +1,5 @@
 
-package analyzer;
+package analyzer.results;
 
 public class MyResult {
    String text;
