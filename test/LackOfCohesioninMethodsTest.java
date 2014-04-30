@@ -2,6 +2,8 @@
 import java.io.File;
 import java.util.ArrayList;
 import lackofcohesioninmethods.LackOfCohesionMeter;
+import lackofcohesioninmethods.Method;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -10,7 +12,7 @@ public class LackOfCohesioninMethodsTest {
     @Test
     public void countMethodsInClassTest() {
         File file = new File("simpleClass.txt");
-        assertEquals(5, LackOfCohesionMeter.countMethodsInClass(file));
+        assertEquals(5, LackOfCohesionMeter.countMethods(file));
     }
 
     @Test
@@ -32,9 +34,29 @@ public class LackOfCohesioninMethodsTest {
     }
     
     @Test
-    public void attributeAccessTest(){
-        File file = new File("simpleClass.txt");
-        assertEquals(8, LackOfCohesionMeter.attributeAccess((file)));
-        //assertEquals(5, LackOfCohesionMeter.countMethodsInClass(file));
+    public void isAccessingAnAttributeWhitThisTest(){
+        Method method = new Method();
+        method.setSignature("public void metodoPrueba(String name){");
+        method.setBody("this.name = \"nombre\";\nboard = null;");
+        
+        Assert.assertTrue(method.isAccessing("name"));
+    }
+    
+    @Test
+    public void isAccessingAnAttributeTest(){
+        Method method = new Method();
+        method.setSignature("public void metodoPrueba(String name){");
+        method.setBody("this.name = \"nombre\";\nboard = null;");
+        
+        Assert.assertTrue(method.isAccessing("board"));
+    }
+    
+    @Test
+    public void isNotAccessingAnAttributeTest(){
+        Method method = new Method();
+        method.setSignature("public void metodoPrueba(String name){");
+        method.setBody("name = \"nombre\";\nboard = null;");
+        
+        Assert.assertFalse(method.isAccessing("name"));
     }
 }

@@ -4,8 +4,7 @@ import game.gameobjects.ships.Ship;
 
 public class Player {
 
-    private String name;
-	private Board board;
+    private String name;private Board board;
 	private String palabra = new String("asdasdsad");
 	private String public protected chachipiruli atributo = new LoQueSea();
 
@@ -33,12 +32,13 @@ public class Player {
         return board;
     }
     
-    public void deployShip(Ship ship){
+    public void deployShip(Ship ship, String x){
         board.deployShip(ship);
     }
 	
-	public void metodoPrueba(String name){
+	public void metodoPrueba(String name, Board board){
 		this.name = "nombre";
+		board = pepe;
 	}
 	
 	Person person = new Person();
