@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Crakocia" name="CyclomaticComplexity.CyclomaticComplexityTest" skipped="0" tests="3" time="0.313" timestamp="2014-04-30T08:59:59">
+<testsuite errors="0" failures="0" hostname="Crakocia" name="CyclomaticComplexity.CyclomaticComplexityTest" skipped="0" tests="4" time="0.234" timestamp="2014-04-30T09:33:30">
   <properties>
     <property name="libs.jsp-compiler.javadoc" value="" />
     <property name="netbeans.autoupdate.country" value="ES" />
@@ -61,7 +61,7 @@
     <property name="copylibs.rebase" value="true" />
     <property name="libs.spring-webmvc3.0.maven-pom" value="" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner CyclomaticComplexity.CyclomaticComplexityTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\crako_000\Documents\Corest\build\test\results\TEST-CyclomaticComplexity.CyclomaticComplexityTest.xml crashfile=C:\Users\crako_000\Documents\Corest\build\junitvmwatcher8774207823012848272.properties propsfile=C:\Users\crako_000\Documents\Corest\build\junit3262105213621579034.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner CyclomaticComplexity.CyclomaticComplexityTest filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\crako_000\Documents\Corest\build\test\results\TEST-CyclomaticComplexity.CyclomaticComplexityTest.xml crashfile=C:\Users\crako_000\Documents\Corest\build\junitvmwatcher797341701425472907.properties propsfile=C:\Users\crako_000\Documents\Corest\build\junit1939561044420012507.properties" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
     <property name="build.sysclasspath" value="ignore" />
@@ -113,7 +113,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="C:\Users\crako_000\Documents\Corest\null1295711126" />
+    <property name="javac.includesfile.binary" value="C:\Users\crako_000\Documents\Corest\null1956900881" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="javac.test.processorpath" value=":build/classes:C:\Program Files\NetBeans 7.4\platform\modules\ext\junit-4.10.jar" />
@@ -405,7 +405,7 @@
     <property name="sun.desktop" value="windows" />
     <property name="libs.restlib.javadoc" value="" />
     <property name="libs.JAXB-ENDORSED.classpath" value="C:\Program Files\NetBeans 7.4\ide\modules\ext\jaxb\api\jaxb-api.jar" />
-    <property name="nb.internal.action.name" value="debug.test.single" />
+    <property name="nb.internal.action.name" value="debug.single" />
     <property name="libs.javaee-api-7.0.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
     <property name="libs.eclipselink.classpath" value="C:\Program Files\NetBeans 7.4\java\modules\ext\eclipselink\eclipselink.jar;C:\Program Files\NetBeans 7.4\java\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar;C:\Program Files\NetBeans 7.4\java\modules\ext\eclipselink\org.eclipse.persistence.jpa.jpql_2.5.1.v20130918-f2b9fc5.jar" />
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
@@ -441,9 +441,10 @@
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
     <property name="libs.javaee-web-api-7.0.javadoc" value="C:\Program Files\NetBeans 7.4\enterprise\docs\javaee-doc-api.jar" />
   </properties>
-  <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="readFile" time="0.0" />
+  <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="cyclomaticComplexityTestSimple" time="0.015" />
+  <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="cyclomaticComplexityTextWithComentCode" time="0.016" />
   <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="openFile" time="0.0" />
-  <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="zeroCiclomaticComplexityTest" time="0.016" />
+  <testcase classname="CyclomaticComplexity.CyclomaticComplexityTest" name="readFile" time="0.0" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

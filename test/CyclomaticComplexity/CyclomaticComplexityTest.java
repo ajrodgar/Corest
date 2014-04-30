@@ -25,15 +25,15 @@ public class CyclomaticComplexityTest {
     }
 
     @Test
-    public void zeroCiclomaticComplexityTest() {  
-        
+    public void cyclomaticComplexityTestSimple() {         
+        CyclomaticComplexity cyclo = new CyclomaticComplexity();        
+        Assert.assertEquals(6, cyclo.getComplexity(cyclo.getFile("Ejemplo1")));        
+        Assert.assertEquals(17, cyclo.getComplexity(cyclo.getFile("Ejemplo2")));    
+    }
+    
+    @Test
+    public void cyclomaticComplexityTextWithComentCode(){
         CyclomaticComplexity cyclo = new CyclomaticComplexity();
-        
-        Assert.assertEquals(6, cyclo.getComplexity(cyclo.getFile("Ejemplo1")));
-        
-        Assert.assertEquals(17, cyclo.getComplexity(cyclo.getFile("Ejemplo2")));
-        
-         Assert.assertEquals(4, cyclo.getComplexity(cyclo.getFile("Ejemplo3")));
-      
+        Assert.assertEquals(4, cyclo.getComplexity(cyclo.getFile("Ejemplo3")));
     }
 }

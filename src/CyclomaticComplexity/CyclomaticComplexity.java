@@ -16,14 +16,27 @@ public class CyclomaticComplexity {
 
         int complexity = 1;
         String words;
+        boolean coment = false;
         StringTokenizer stTokenizer = new StringTokenizer(source);
 
         while (stTokenizer.hasMoreTokens()) {
             words = stTokenizer.nextToken();
-            for (String keyword : keywords) {
-                if (words.contains(keyword)) {
-                    complexity++;
+            for (String keyword : keywords) {                            
+                    
+                if(!coment){
+                    
+                     if (words.contains("/*")) coment = true; 
+                     if (words.contains("//")) coment = true; 
+                    
+                     if (words.contains(keyword)) 
+                        complexity++;
                 }
+                else{
+                     if (words.contains("*/")) coment = false;
+                     if (words.contains("\n")) coment = false;
+                }
+                   
+                    
             }
         }
         return complexity;
@@ -42,7 +55,7 @@ public class CyclomaticComplexity {
                         
 			while (line != null){
                             line = br.readLine();
-                            source = source + line;
+                            source = source + line + "\n";
 			}
                         
                         return source;
