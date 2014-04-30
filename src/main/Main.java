@@ -7,12 +7,13 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        MainController test = new MainController("https://github.com/ajrodgar/Corest.git");
-        ArrayList<MyResult> results = test.analyzeAll("AnalyzerTest");
+        ControlPanel test = new ControlPanel("https://github.com/ajrodgar/Corest.git");
         
-        for (MyResult myResult : results) {
-            System.out.println("\nResult: "+myResult.getText());
+        ArrayList<MyResult> analyzerTest= test.getAnalyzerTest();
+        
+        for (MyResult result : analyzerTest) {
+            System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult: "+(String)result.getResult());
         }
-
+        
     }
 }

@@ -74,7 +74,7 @@ public class FileListBuilder {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while((line = bufferedReader.readLine()) != null) {
-                fileContent+=line;
+                fileContent+=line+"\n";
             }
             fileReader.close();
         }

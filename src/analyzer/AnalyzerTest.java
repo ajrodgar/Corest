@@ -4,11 +4,12 @@ import analyzer.results.MyResult;
 
 
 public class AnalyzerTest implements Analyzer{
+    String file;
     String source;
     String resultTXT;
     
-    public AnalyzerTest(String src) {
-        
+    public AnalyzerTest(String key, String src) {
+        this.file= key;
         this.source = src;
         calculateResultTXT();
     }
@@ -21,7 +22,7 @@ public class AnalyzerTest implements Analyzer{
     @Override
     public MyResult getResult() {
         
-        return new MyResult("\nAnalyzerTest src a analizar: "+resultTXT);
+        return new MyResult("AnalyzerTest",file,resultTXT);
     }
     
 }
