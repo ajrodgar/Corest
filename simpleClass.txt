@@ -3,8 +3,19 @@ package game;
 import game.gameobjects.ships.Ship;
 
 public class Player {
+//Esto es un comentario que no debe salir 
 
-    private String name;private Board board;
+/*Esto es
+
+
+
+un bloque
+
+
+
+de comentario*/
+
+private String name;private Board board; //Esto es otro comentario que tampoco tiene que salir
 	private String palabra = new String("asdasdsad");
 	private String public protected chachipiruli atributo = new LoQueSea();
 
@@ -24,7 +35,15 @@ public class Player {
         board = new Board();
     }
 
-    public String getName() throws Exception{
+    public String getName() throws Exception{/*Esto es
+
+
+
+un bloque
+
+
+
+de comentario*/
         return name;
     }
 
