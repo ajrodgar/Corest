@@ -19,14 +19,18 @@ public class ApiTwitter {
 
         // The factory instance is re-useable and thread safe.
         Query query = new Query(q);
-
+        query.setResultType(Query.ResultType.recent);
         query.setCount(countMax);
         query.setSince(since);
         query.setUntil(until);
         query.geoCode(new GeoLocation(28.113155, -15.440883), radio, "km");
 
         QueryResult result = twitter.search(query);
-
-        return result.getTweets().size();
+        int nTweets = result.getTweets().size();
+        while(result.hasNext()){
+            result = twitter.search(result.nextQuery());
+            nTweets += result.getTweets().size();
+        }
+        return nTweets;
     }
 }
