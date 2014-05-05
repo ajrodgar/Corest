@@ -1,7 +1,7 @@
 package main;
 
 import analyzer.Analyzer;
-import analyzer.results.MyResult;
+import analyzer.results.AnalyzerResult;
 import java.io.File;
 import java.lang.reflect.Constructor;
 import java.sql.Timestamp;
@@ -14,24 +14,22 @@ import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 
-public class GitManager {
+public class GitRepository {
     String gitURL;
     String branch;
     FileListBuilder fileMaps;
 
-    public GitManager(String gitURL) {
-        this.gitURL = gitURL;
-        this.branch = "master";
-        this.getFiles();
-    }
-    
-    public GitManager(String gitURL, String branch) {
+    public GitRepository(String gitURL, String branch) {
         this.gitURL = gitURL;
         this.branch = branch;
-        this.getFiles();
+        this.init();
     }
     
-    private void getFiles(){
+    public GitRepository(String gitURL) {
+        this(gitURL, "master");
+    }
+    
+    private void init(){
         //c.setU//RI("https://bitbucket.org/Adrian_M/hpds-expressionevaluator.git"); errores en bitbucket - autentificación 
         CloneCommand c = new CloneCommand();
         c.setURI(gitURL);
@@ -49,7 +47,7 @@ public class GitManager {
         try {
             c.call();
         } catch (GitAPIException ex) {
-            Logger.getLogger(GitManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GitRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         generateDirectory(rutaSrc);
@@ -59,7 +57,7 @@ public class GitManager {
        fileMaps = new FileListBuilder(ruta);
     }
     
-    public MyResult analyze(String key, String analyzerToUse, String fileTxt) throws Exception{
+    public AnalyzerResult analyze(String key, String analyzerToUse, String fileTxt) throws Exception{
         Analyzer analyzer;
         Class<?> c;
         c = Class.forName("analyzer."+analyzerToUse);
@@ -69,8 +67,8 @@ public class GitManager {
         return a.getResult();    
     }
     
-    public ArrayList<MyResult> analyzeAll(String analyzerToUse) throws Exception{
-        ArrayList<MyResult> result = new ArrayList<>();
+    public ArrayList<AnalyzerResult> analyzeAll(String analyzerToUse) throws Exception{
+        ArrayList<AnalyzerResult> result = new ArrayList<>();
         Set<String> keys =fileMaps.getFileContentMap().keySet();
         
         for (String string : keys) {
@@ -81,13 +79,7 @@ public class GitManager {
         return result;
     }
 
-    
-    
     public FileListBuilder getFileMaps() {
         return fileMaps;
     }
-    
-    
-    
-    
 }

@@ -1,8 +1,8 @@
 package analyzer;
 
-import analyzer.results.MyResult;
+import analyzer.results.AnalyzerResult;
 
 
 public interface Analyzer {
-    public MyResult getResult();
+    public AnalyzerResult getResult();
 }

@@ -1,6 +1,6 @@
 package analyzer;
 
-import analyzer.results.MyResult;
+import analyzer.results.AnalyzerResult;
 
 
 public class AnalyzerFake implements Analyzer{
@@ -20,9 +20,9 @@ public class AnalyzerFake implements Analyzer{
     }
     
     @Override
-    public MyResult getResult() {
+    public AnalyzerResult getResult() {
         
-        return new MyResult("AnalyzerFake",file,resultTXT);
+        return new AnalyzerResult("AnalyzerFake",file,resultTXT);
     }
     
 }

@@ -1,6 +1,6 @@
 package main;
 
-import analyzer.results.MyResult;
+import analyzer.results.AnalyzerResult;
 import java.util.ArrayList;
 
 public class Main {
@@ -15,9 +15,15 @@ public class Main {
             System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult: "+(String)result.getResult());
         }*/
         
-        ArrayList<MyResult> analyzerCodeLines= test.getAnalyzerCodeLinesCounter();
+        ArrayList<AnalyzerResult> analyzerCodeLines= test.getAnalyzerCodeLinesCounter();
         
-        for (MyResult result : analyzerCodeLines) {
+        for (AnalyzerResult result : analyzerCodeLines) {
+            System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult:\n"+(String)result.getResult());
+        }
+        
+        ArrayList<AnalyzerResult> analyzerCyclomaticComplexity= test.getAnalyzerCyclomaticComplexity();
+        
+        for (AnalyzerResult result : analyzerCyclomaticComplexity) {
             System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult:\n"+(String)result.getResult());
         }
         

@@ -3,7 +3,7 @@ package analyzer;
 
 
 
-import analyzer.results.MyResult;
+import analyzer.results.AnalyzerResult;
 
 public class AnalyzerCodeLinesCounter implements Analyzer{
     private int linesCounter;
@@ -61,11 +61,11 @@ public class AnalyzerCodeLinesCounter implements Analyzer{
     }
 
     @Override
-    public MyResult getResult() {
+    public AnalyzerResult getResult() {
         
         String res = "Total code lines: "+countLines()+"\nCommented lines: "+countComments()+"\n";
 
-        return new MyResult("CodeLineCounter", this.key, res);
+        return new AnalyzerResult("CodeLineCounter", this.key, res);
     }
 
 }

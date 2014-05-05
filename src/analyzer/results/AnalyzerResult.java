@@ -1,12 +1,12 @@
 
 package analyzer.results;
 
-public class MyResult {
+public class AnalyzerResult {
    String analyzer;
    String reference;
    Object result;
 
-    public MyResult(String text, String reference, Object result) {
+    public AnalyzerResult(String text, String reference, Object result) {
         this.analyzer = text;
         this.result = result;
         this.reference = reference;
