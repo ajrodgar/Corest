@@ -14,18 +14,18 @@ import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
 
 
-public class MainController {
+public class GitManager {
     String gitURL;
     String branch;
     FileListBuilder fileMaps;
 
-    public MainController(String gitURL) {
+    public GitManager(String gitURL) {
         this.gitURL = gitURL;
         this.branch = "master";
         this.getFiles();
     }
     
-    public MainController(String gitURL, String branch) {
+    public GitManager(String gitURL, String branch) {
         this.gitURL = gitURL;
         this.branch = branch;
         this.getFiles();
@@ -48,7 +48,7 @@ public class MainController {
         try {
             c.call();
         } catch (GitAPIException ex) {
-            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GitManager.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         generateDirectory(rutaSrc);
