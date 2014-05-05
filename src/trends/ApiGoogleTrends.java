@@ -1,6 +1,8 @@
 
 package trends;
 
+import java.io.IOException;
+import java.util.List;
 import javax.naming.ConfigurationException;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
@@ -16,7 +18,7 @@ import org.freaknet.gtrends.api.exceptions.GoogleTrendsClientException;
 import org.freaknet.gtrends.api.exceptions.GoogleTrendsRequestException;
 
 public class ApiGoogleTrends {
-    public void getTopCities(String query) throws GoogleTrendsClientException, GoogleTrendsRequestException, ConfigurationException, org.apache.commons.configuration.ConfigurationException {
+    public List<String[]> getTopCities(String query) throws GoogleTrendsClientException, GoogleTrendsRequestException, ConfigurationException, org.apache.commons.configuration.ConfigurationException, IOException {
         String u = "codestproject@gmail.com";
         String p = "proyectogs2";
 
@@ -40,7 +42,8 @@ public class ApiGoogleTrends {
         /* The default request downloads a CSV available in content */
         GoogleTrendsCsvParser csvParser = new GoogleTrendsCsvParser(content);
         /* Get a specific section of the CSV */
-        String section = csvParser.getSectionAsString("Top cities for", true);
-        System.out.println(section);
+//        String section = csvParser.getSectionAsString("Top cities for", true);
+        
+        return csvParser.getSectionAsStringArrayList("Top cities for", true, ",");
     }
 }
