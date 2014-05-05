@@ -4,19 +4,16 @@ package analyzer;
 
 
 import analyzer.results.MyResult;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class AnalyzerCodeLinesCounter implements Analyzer{
     private int linesCounter;
     private int commentCounter;
     private boolean insideCommentBlock;
     private final String[] file;
-    private String src;
+    private String key;
 
     public AnalyzerCodeLinesCounter(String key, String file){
-        this.src = key;
+        this.key = key;
         this.linesCounter = 0;
         this.commentCounter = 0;
         this.insideCommentBlock = false;
@@ -32,11 +29,11 @@ public class AnalyzerCodeLinesCounter implements Analyzer{
             }
     }
     
-    public int countComments() throws IOException{
+    public int countComments(){
         return commentCounter;
     }
     
-    public int countLines() throws IOException{
+    public int countLines(){
         return linesCounter;
     }
     
@@ -65,13 +62,10 @@ public class AnalyzerCodeLinesCounter implements Analyzer{
 
     @Override
     public MyResult getResult() {
-        String res="-";
-        try {
-            res = "Comment lines: "+countComments()+"\nCode lines: "+countLines()+"\n";
-        } catch (IOException ex) {
-            Logger.getLogger(AnalyzerCodeLinesCounter.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return new MyResult("CodeLineCounter", this.src, res);
+        
+        String res = "Total code lines: "+countLines()+"\nCommented lines: "+countComments()+"\n";
+
+        return new MyResult("CodeLineCounter", this.key, res);
     }
 
 }
