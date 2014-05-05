@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="file:/C:/Users/Josue/Documents/NetBeansProjects/Corest/dist/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>Corest</title>
+        <vendor>Josue</vendor>
+        <homepage href=""/>
+        <description>Corest</description>
+        <description kind="short">Corest</description>
+    </information>
+    <update check="always"/>
+    <resources>
+        <j2se version="1.8+"/>
+        <jar href="Corest.jar" main="true"/>
+    <jar href="lib/javaee-api-7.0.jar"/>
+</resources>
+    <application-desc main-class="rest.api.Main">
+    </application-desc>
+</jnlp>

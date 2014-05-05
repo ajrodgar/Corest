@@ -7,13 +7,13 @@ var app = app || {};
     // ----------
     app.Rank = Backbone.Model.extend({
 
-        urlRoot: "/api/rank/",
+        urlRoot: 'http://localhost:8080/api/rank',
 
         defaults: function () {
             return {
                 id: null,
-                text: "Lorem ipsum dolor sit amet",
-                value: 69
+                module: "",
+                value: 0
             };
         }
 
@@ -22,7 +22,7 @@ var app = app || {};
     var Ranking = Backbone.Collection.extend({
         model: app.Rank,
 
-        baseUrl: '/api/rank/'
+        url: 'http://localhost:8080/api/rank'
     });
 
     // Create our global collection of **Ranking**.
@@ -53,7 +53,7 @@ var app = app || {};
             this.listenTo(app.Ranking, 'reset', this.addAll);
             //this.listenTo(app.Ranking, 'all', this.render);
 
-            //app.Ranking.fetch();
+            app.Ranking.fetch({dataType : 'jsonp'});
         },
 
         addOne: function (rank) {
