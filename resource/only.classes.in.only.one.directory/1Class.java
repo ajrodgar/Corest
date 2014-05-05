@@ -6,4 +6,4 @@ ramón ramirez se lo ha robado
 // this is a //comment and i hate it.
 // this is a //comment and i hate it.
 dslfknsdlfnsldfnslnflsjdnfljsndfljsn /
-/* this is other kind of comment */
+/* thi is other kind of comment */

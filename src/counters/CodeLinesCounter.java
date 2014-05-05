@@ -1,46 +1,28 @@
 package counters;
 
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
-public class CodeLineCounter {
+public class CodeLinesCounter {
     private int linesCounter;
     private int commentCounter;
-    private boolean insideCommentBlock;    
+    private boolean insideCommentBlock;
+    private final String[] file;
 
-    public CodeLineCounter(File route) throws IOException {
+    public CodeLinesCounter(String file){
         this.linesCounter = 0;
         this.commentCounter = 0;
         this.insideCommentBlock = false;
-        count(route);
+        this.file = file.split("\n");
+        count();
     }
 
-    private int count (File route) throws FileNotFoundException, IOException{
-        BufferedReader reader = null;
-        String line;
-        try {
-            reader = new BufferedReader(new FileReader(route));
-            while ((line = reader.readLine()) != null) {
+    private void count () {
+            for(String line : file){
                 linesCounter++;
                 if (!insideCommentBlock) if (isStartingCommentBlock(line))  commentCounter++;
                 if (insideCommentBlock)  if (isFinishingCommentBlock(line)) commentCounter++;
             }
-            reader.close();
-        } 
-        
-        catch (IOException FileNotFoundException){
-            return -1;
-        } 
-        
-        finally {
-             if (reader != null) reader.close();
-        }
-        
-        return 1;
     }
     
     public int countComments() throws IOException{
@@ -73,8 +55,6 @@ public class CodeLineCounter {
         }
         return false;
     }
-    
-    
-}
 
+}
 
