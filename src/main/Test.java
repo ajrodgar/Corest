@@ -25,7 +25,9 @@ public class Test {
             System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult:\n"+(String)result.getResult());
         }
         
-         
+        /*
+        ---------------Enable when AnalyzerLackOfCohesion is fixed----------------------------------------
+        
         System.out.println("LACK OF COHESION:");
         
         ArrayList<AnalyzerResult> analyzerLackOfCohesion= repositoryAnalyzer.getAnalyzerLackOfCohesion();
@@ -33,6 +35,6 @@ public class Test {
         for (AnalyzerResult result : analyzerLackOfCohesion) {
             System.out.println("\n"+result.getAnalyzer()+" ("+result.getReference()+")"+"\nResult:\n"+(String)result.getResult());
         }
-        
+        */
     }
 }
