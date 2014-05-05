@@ -16,13 +16,12 @@ public class FileStringizer {
             br = new BufferedReader(fr);
             String linea;
             while ((linea = br.readLine()) != null) {
-                linea = deleteComments(linea);
                 fileString += linea;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return deleteMultiLineComments(fileString);
+        return fileString;
     }
 
     private static String format(String source) {
@@ -33,14 +32,18 @@ public class FileStringizer {
         return formatedFile;
     }
 
-    public static String[] prepareFile(File file) {
-        String code = format(FileStringizer.fileToString(file));
-        return code.split("\n");
+    public static String[] prepareFile(String code) {
+        code = format(code);
+        code = deleteMultiLineComments(code);
+        String[] lines = code.split("\n");
+        for (int i = 0; i < lines.length; i++) {
+            deleteComments(lines[i]);
+        }
+        return lines;
     }
     
-    private static String deleteComments(String line){
-        if(line.contains("//")) return line.substring(0, line.indexOf("//"));
-        return line;
+    private static void deleteComments(String line){
+        if(line.contains("//")) line = line.substring(0, line.indexOf("//"));
     }
     
     private static String deleteMultiLineComments(String source){

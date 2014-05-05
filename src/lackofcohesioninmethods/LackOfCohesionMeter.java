@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class LackOfCohesionMeter {
 
-    public static int countMethods(File file) {
+    public static int countMethods(String file) {
         return getMethods(file).size();
     }
    
@@ -16,7 +16,7 @@ public class LackOfCohesionMeter {
         return line.contains("){") || line.contains(")throws");
     }
 
-    private static ArrayList<String> extractAttributeLines(File file) {
+    private static ArrayList<String> extractAttributeLines(String file) {
         ArrayList<String> attributes = new ArrayList<>();
         int openedBlocks = 0;
         for (String line : FileStringizer.prepareFile(file)) {
@@ -27,11 +27,11 @@ public class LackOfCohesionMeter {
         return attributes; 
     }
     
-    public static int countAttributes(File file){
+    public static int countAttributes(String file){
         return extractAttributeLines(file).size();
     }
     
-    public static ArrayList<String> identifyAttributeNames(File file) {
+    public static ArrayList<String> identifyAttributeNames(String file) {
         ArrayList<String> attributes = new ArrayList<>();
         for (String line : extractAttributeLines(file)) {
             if (line.contains("=")) attributes.add(getInitializedAttributeName(line));
@@ -49,7 +49,7 @@ public class LackOfCohesionMeter {
         return line.substring(line.lastIndexOf(" ") + 1, line.length() - 1);
     }
     
-    public static ArrayList<Method> getMethods(File file){
+    public static ArrayList<Method> getMethods(String file){
         ArrayList<Method> methods = new ArrayList<>();
         Method method = new Method();
         String body = "";
@@ -74,7 +74,7 @@ public class LackOfCohesionMeter {
         return methods;
     }
     
-    public static double lackOfCohesion(File file){
+    public static double lackOfCohesion(String file){
         int accesses = 0;
         
          for (Method method : LackOfCohesionMeter.getMethods(file)) {
