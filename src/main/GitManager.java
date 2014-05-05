@@ -42,7 +42,8 @@ public class GitManager {
         String folderT= gitURL+new Timestamp(date.getTime());
         String folder= folderT.replaceAll("[:\\.\\-\\ \\/]", "");
         
-        String rutaSrc = "C://Users//usuario//Desktop//"+folder;
+        String rutaSrc = "temp/"+folder;
+
         c.setDirectory(new File(rutaSrc));
        
         try {
