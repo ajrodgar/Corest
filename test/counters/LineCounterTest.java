@@ -19,6 +19,5 @@ public class LineCounterTest {
     public void commentCounterTest() throws IOException {
         Assert.assertEquals(4, new CodeLineCounter(test1).countComments());
     }
-    
-    
+
 }

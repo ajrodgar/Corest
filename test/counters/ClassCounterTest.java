@@ -33,4 +33,9 @@ public class ClassCounterTest {
         Assert.assertEquals(3, counter.count(new File("resource/files.and.classes.in.directory.with.more.directories")));
     }
 
+    @Test
+    public void countClassesWithInner(){
+        Assert.assertEquals(5, counter.count(new File("resource/count.classes.with.inner")));
+    }
+
 }
