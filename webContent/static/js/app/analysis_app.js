@@ -7,7 +7,7 @@ var app = app || {};
     // ----------
     app.Rank = Backbone.Model.extend({
 
-        urlRoot: 'http://localhost:8080/api/rank',
+        urlRoot: '/api/rank',
 
         defaults: function () {
             return {
@@ -22,7 +22,7 @@ var app = app || {};
     var Ranking = Backbone.Collection.extend({
         model: app.Rank,
 
-        url: 'http://localhost:8080/api/rank'
+        url: '/api/rank'
     });
 
     // Create our global collection of **Ranking**.
@@ -34,7 +34,7 @@ var app = app || {};
  
         tagName: 'li',
 
-        template: _.template("<%= text %> <span class='label label-success'><%= value %></span>"),
+        template: _.template("<%= module %> <span class='label label-success'><%= value %></span>"),
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
@@ -50,10 +50,8 @@ var app = app || {};
 
         initialize: function () {
             this.listenTo(app.Ranking, 'add', this.addOne);
-            this.listenTo(app.Ranking, 'reset', this.addAll);
-            //this.listenTo(app.Ranking, 'all', this.render);
 
-            app.Ranking.fetch({dataType : 'jsonp'});
+            app.Ranking.fetch();
         },
 
         addOne: function (rank) {
@@ -61,10 +59,6 @@ var app = app || {};
                 model: rank
             });
             this.$(".stats ul.rank").append(view.render().el);
-        },
-
-        addAll: function () {
-            app.Ranking.each(this.addOne, this);
         }
     });
 })(jQuery);
