@@ -28,6 +28,20 @@ public class classDependenciesTest {
     }
     
     @Test
+    public void alikeNameClassDependenciesTest(){
+        String file = "package parser;\n" +
+                        "\n" +
+                        "public interface TestClass {\n" +
+                        "    public AnotherTestClass build(Token token);\n" +
+                        "}";
+        ProjectPackagesInformation packageInformationLoader = new ProjectPackagesInformation();
+        ClassDependenciesEvaluator classDependencyEvaluator;
+        classDependencyEvaluator = new ClassDependenciesEvaluator(packageInformationLoader.loadClasses());
+        ArrayList<String> dependencies = classDependencyEvaluator.getDependencies(file, "parser.TestClass");
+        assertEquals(new ArrayList<String>(){{add("parser.AnotherTestClass");}}, dependencies);       
+    }
+    
+    @Test
     public void anotherClassDependenciesTest(){
         String file = "package parser;\n" +
                         "\n" +
