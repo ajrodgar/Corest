@@ -1,5 +1,10 @@
 package trends;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -7,7 +12,7 @@ public class ApiTwitter {
 
     private static final int countMax = 100;
 
-    public int numTweets(String q, String since, String until, GeoLocation geoLocation, int radio) throws TwitterException {
+    public int numTweets(String q) throws TwitterException {
         ConfigurationBuilder cb = new ConfigurationBuilder();
         cb.setDebugEnabled(true)
                 .setOAuthConsumerKey("R6pHmw0qdDWgXH7MEu40fskl4")
@@ -17,14 +22,21 @@ public class ApiTwitter {
         TwitterFactory tf = new TwitterFactory(cb.build());
         Twitter twitter = tf.getInstance();
 
-        // The factory instance is re-useable and thread safe.
         Query query = new Query(q);
         query.setResultType(Query.ResultType.recent);
         query.setCount(countMax);
-        query.setSince(since);
-        query.setUntil(until);
-        query.geoCode(new GeoLocation(28.113155, -15.440883), radio, "km");
-
+        
+        Calendar calendar = GregorianCalendar.getInstance();
+        Date untilDate = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        Date sinceDate = calendar.getTime();
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.format(sinceDate);
+        
+        query.setSince(dateFormat.format(sinceDate));
+        query.setUntil(dateFormat.format(untilDate));
+        
         QueryResult result = twitter.search(query);
         int nTweets = result.getTweets().size();
         while(result.hasNext()){
