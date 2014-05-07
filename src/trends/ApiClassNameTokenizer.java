@@ -18,7 +18,11 @@ public class ApiClassNameTokenizer {
     }
 
     private List<String> tokenListFromClassName(String nameClass) {
-        return Arrays.asList(nameClass.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])"));
+        return Arrays.asList(nameClass.split(patternCamelCase()));
+    }
+
+    private static String patternCamelCase() {
+        return "(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])";
     }
 
 }
