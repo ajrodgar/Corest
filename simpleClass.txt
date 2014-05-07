@@ -19,6 +19,7 @@ private String name;private Board board; //Esto es otro comentario que tampoco t
 	private String palabra = new String("asdasdsad");
 private String palabra2 = new String("asdasdsad");
 	private String public protected chachipiruli atributo = new LoQueSea();
+private int array ={1,2,3};
 
     public Player(String name) { 
 		if(palabra == 0){ return;

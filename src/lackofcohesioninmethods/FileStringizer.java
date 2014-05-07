@@ -38,7 +38,6 @@ public class FileStringizer {
         String[] lines = code.split("\n");
         for (int i = 0; i < lines.length; i++) {
             lines[i] = deleteComments(lines[i]);
-            System.out.println(lines[i]);
         }
         return lines;
     }

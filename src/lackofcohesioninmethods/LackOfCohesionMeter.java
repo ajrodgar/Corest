@@ -18,12 +18,19 @@ public class LackOfCohesionMeter {
     public static ArrayList<String> extractAttributeLines(String file) {
         ArrayList<String> attributes = new ArrayList<>();
         int openedBlocks = 0;
+        boolean isArray=false;
         for (String line : FileStringizer.prepareFile(file)) {
-            if (line.contains("{")) openedBlocks++;
-            else if (line.contains("}")) openedBlocks--;
-            else if (openedBlocks == 1 && line.length() > 0){
+            if (line.contains("={") && openedBlocks==1){
+                isArray = true;
+                attributes.add(line);
+                //openedBlocks++;
+            }
+            else if (line.contains("{")) openedBlocks++;
+            else if (line.contains("}") && !isArray) openedBlocks--;
+            else if (line.contains("}") && isArray) isArray=false;
+            else if (openedBlocks == 1 && line.length() > 0 && !isArray){
                 if(line.contains("//")) line = line.substring(0, line.indexOf("//"));
-                if(!line.trim().equals("")) attributes.add(line);
+                if(!line.trim().equals("") && openedBlocks==1) attributes.add(line);
             }
         }
         return attributes; 
@@ -43,6 +50,7 @@ public class LackOfCohesionMeter {
     }
     
     private static String getInitializedAttributeName(String line){
+        //System.out.println("Entra: "+line);
         String lineWithOutEqual = line.substring(0, line.indexOf("=")).trim();
         return lineWithOutEqual.substring(lineWithOutEqual.lastIndexOf(" ") + 1, lineWithOutEqual.trim().length());
     }
