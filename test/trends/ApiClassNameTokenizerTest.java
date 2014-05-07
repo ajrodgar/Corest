@@ -18,7 +18,7 @@ public class ApiClassNameTokenizerTest {
     public void tokenizerOneNameClass() {
         ApiClassNameTokenizer tokenizer = new ApiClassNameTokenizer();
         setUpListClassWithOneNameClass();
-        ArrayList<String> token = tokenizer.tokens(listClass);
+        List<String> token = tokenizer.tokens(listClass);
 
         assertEquals("Api", token.get(0));
         assertEquals("Name", token.get(1));
@@ -33,7 +33,7 @@ public class ApiClassNameTokenizerTest {
         setUpListClassWithOneNameClass();
         listClass.add("ApiGoogleTrendsTest");
 
-        ArrayList<String> token = tokenizer.tokens(listClass);
+        List<String> token = tokenizer.tokens(listClass);
 
         assertEquals("Api", token.get(0));
         assertEquals("Name", token.get(1));

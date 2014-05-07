@@ -7,7 +7,7 @@ import java.util.List;
 public class ApiClassNameTokenizer {
 
 
-    public ArrayList<String> tokens(List<String> listClass) {
+    public List<String> tokens(List<String> listClass) {
         ArrayList<String> listToken = new ArrayList();
 
         for (String nameClass : listClass) {
