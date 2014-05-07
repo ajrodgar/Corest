@@ -29,24 +29,24 @@ public class FileStringizer {
         formatedFile = formatedFile.replace("{", "{\n");
         formatedFile = formatedFile.replace(";", ";\n");
         formatedFile = formatedFile.replace("}", "\n}\n");
-        //formatedFile = formatedFile.replace("@Override", "\n");
         return formatedFile;
     }
 
     public static String[] prepareFile(String code) {
-        //code = code.replaceAll("\n", "");
         code = deleteMultiLineComments(code);
         code = format(code);
         String[] lines = code.split("\n");
         for (int i = 0; i < lines.length; i++) {
-            deleteComments(lines[i]);
+            lines[i] = deleteComments(lines[i]);
+            System.out.println(lines[i]);
         }
         return lines;
     }
     
-    private static void deleteComments(String line){
-        if(line.contains("//")) line = "";
-        if(line.contains("@")) line = "";
+    private static String deleteComments(String line){
+        if(line.contains("//")) return "";
+        if(line.contains("@")) return "";
+        return line;
     }
     
     private static String deleteMultiLineComments(String source){

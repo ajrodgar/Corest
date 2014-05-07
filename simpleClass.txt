@@ -14,7 +14,7 @@ un bloque
 
 
 de comentario*/
-
+@Override
 private String name;private Board board; //Esto es otro comentario que tampoco tiene que salir
 	private String palabra = new String("asdasdsad");
 private String palabra2 = new String("asdasdsad");

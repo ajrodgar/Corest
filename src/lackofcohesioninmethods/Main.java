@@ -9,5 +9,8 @@ public class Main {
         for (String att : LackOfCohesionMeter.extractAttributeLines(FileStringizer.fileToString(new File("simpleClass.txt")))) {
             System.out.println(att);
         }
+        
     }
+    
+   
 }
