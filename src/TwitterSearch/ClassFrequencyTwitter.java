@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import trends.ApiTopsy;
 
-public class ClassFrequency {
+public class ClassFrequencyTwitter {
     
-    public List getNumTweetsOfClasses(){
-        List<String> listWords = new ArrayList<>(); //Here I will use a method to get the keywords.
+    public List getNumTweetsOfClasses(List<String> listWords){
         List<Tweet> wordsFrequency = new ArrayList<>();
-         ApiTopsy instance = new ApiTopsy();
+        ApiTopsy instance = new ApiTopsy();
         
         for (String words : listWords) {
             Response response = instance.searchCount(words);;
