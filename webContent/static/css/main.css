@@ -487,6 +487,32 @@ body > section#title {
     animation: fadeInUp 300ms linear 1200ms both;
 }
 
+#main-slider #private-fields {
+    margin-top: 5px
+}
+
+#main-slider .checkbox {
+    margin-top: 7px
+}
+
+#main-slider #private-fields input[name="username"]{
+    margin-bottom: 5px;
+}
+
+#main-slider #advanced {
+    margin-top: 7px;
+}
+
+.btn-clean {
+    border: 0;
+    background: transparent;
+    color: white;
+}
+
+.btn-clean:hover {
+    text-decoration: underline;
+}
+
 #services .media:hover .icon-md {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.8);

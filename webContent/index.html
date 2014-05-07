@@ -67,16 +67,35 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="carousel-content center centered">
-				<form id="analyze-form">
-                                <h2 class="animation animated-item-1">Lorem ipsum dolor sit amet</h2>
+				<form id="analyze-form" class="form-inline">
+                                <h2 class="animation animated-item-1">Improve your code quality</h2>
                                 <br>
                                 <p class="boxed animation animated-item-2">Enter the repository url from Github or Bitbucket to start:</p>
                                 <br>
                                 <div class="col-md-4 col-md-offset-4">
                                     <input type="url" placeholder="http://" class="form-control" name="url">
                                 </div>
+ 
+                                <div class="col-md-2 col-md-offset-4 text-left">
+                                    <div class="checkbox">
+                                        <label>
+                                          <input name="is_private" type="checkbox" autocomplete="off"> Is private
+                                        </label>
+                                  </div>
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <button id="advanced" class="btn-clean">Advanced settings</button>
+                                </div>
+
+                                <div id="advanced-fields" class="form-group col-md-4 col-md-offset-4 text-left hide">
+                                    <label for="branch-input">Branch:</label>
+                                    <input type="text" placeholder="master" class="form-control input-sm" name="branch" id="branch-input">
+                                </div>
+                                 
                                 <div class="clearfix"></div>
+                                
                                 <input type="submit" class="btn btn-lg btn-success" value="Analyze now">
+                            
 				</form>
                             </div>
                         </div>
@@ -318,6 +337,36 @@
     </div>
 </footer>
 <!--/#footer-->
+
+
+<!-- Modal -->
+<div class="modal fade" id="privateModal" tabindex="-1" role="dialog" aria-labelledby="privateModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Private Repository</h4>
+      </div>
+      <div class="modal-body">
+         <p>If yout repository is private, we need to authenticate your user. Please, enter your username and password:</p>
+         <form class="form-inline" role="form">
+            <div class="form-group">
+            <label class="sr-only" for="exampleInputEmail2">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Enter your username">
+          </div>
+          <div class="form-group">
+            <label class="sr-only" for="exampleInputPassword2">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button id="cancel-private" type="button" class="btn btn-danger">Cancel</button>
+        <button id="save-private" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script src="static/js/jquery-1.11.0.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
