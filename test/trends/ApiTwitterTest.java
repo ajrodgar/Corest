@@ -2,7 +2,6 @@
 package trends;
 
 import org.junit.Test;
-import twitter4j.GeoLocation;
 
 public class ApiTwitterTest {
     
