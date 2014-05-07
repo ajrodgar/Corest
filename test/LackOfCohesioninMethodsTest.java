@@ -22,7 +22,7 @@ public class LackOfCohesioninMethodsTest {
 
     @Test
     public void countAttributesInClassTest() {
-        assertEquals(6, LackOfCohesionMeter.countAttributes(initializeStringFile()));
+        assertEquals(7, LackOfCohesionMeter.countAttributes(initializeStringFile()));
     }
     
     @Test
@@ -33,6 +33,7 @@ public class LackOfCohesioninMethodsTest {
         attributes.add("palabra");
         attributes.add("palabra2");
         attributes.add("atributo");
+        attributes.add("array");
         attributes.add("person");
         assertEquals(attributes, LackOfCohesionMeter.identifyAttributeNames((initializeStringFile())));
     }

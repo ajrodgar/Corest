@@ -30,7 +30,9 @@ public class LackOfCohesionMeter {
             else if (line.contains("}") && isArray) isArray=false;
             else if (openedBlocks == 1 && line.length() > 0 && !isArray){
                 if(line.contains("//")) line = line.substring(0, line.indexOf("//"));
-                if(!line.trim().equals("") && openedBlocks==1) attributes.add(line);
+                if(!line.trim().equals("") && openedBlocks==1){
+                    if(!line.startsWith(";")) attributes.add(line);
+                }
             }
         }
         return attributes; 
@@ -70,9 +72,11 @@ public class LackOfCohesionMeter {
             if (line.contains("}")) openedBlocks--;
             if (line.contains("}") && openedBlocks == 1){
                 method.setBody(body);
-                methods.add(method);
-                method = new Method();
-                body = "";
+                if(method.getSignature()!=null){
+                    methods.add(method);
+                    method = new Method();
+                    body = "";
+                }
             }
             if (openedBlocks < 2) continue;
             
