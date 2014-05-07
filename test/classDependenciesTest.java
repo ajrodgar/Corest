@@ -1,7 +1,8 @@
-package classDependencies;
 
+
+import classDependencies.ProjectPackagesInformation;
+import classDependencies.ClassDependenciesEvaluator;
 import java.util.ArrayList;
-import java.util.HashMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,10 +1,8 @@
 package classDependencies;
 
-import java.io.BufferedReader;
-import java.io.StringReader;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 import static classDependencies.NameFacilitator.*;
 
@@ -12,7 +10,7 @@ public class ClassDependenciesEvaluator {
     ArrayList<String> dependencies = new ArrayList<>();
     HashMap<String,String> projectClasses;
 
-    ClassDependenciesEvaluator(HashMap<String, String> projectClasses) {
+    public ClassDependenciesEvaluator(HashMap<String, String> projectClasses) {
         this.projectClasses = projectClasses;
     }
     
@@ -23,25 +21,39 @@ public class ClassDependenciesEvaluator {
     }
 
 
-    private void getImportDependencies(String classCode) {
+    public ArrayList<String> getImportDependencies(String classCode) {
+        ArrayList<String> importDependencies = new ArrayList<>();
+        
         Scanner scanner = new Scanner(classCode);
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
             if(line.contains("import")){
                 if(line.contains("*"))
-                    for (String className : getClassesNamesFromPackage(getPackageNameFromImportLine(line), projectClasses))
+                    for (String className : getClassesNamesFromPackage(getPackageNameFromImportLine(line), projectClasses)){
                         dependencies.add(className);
-                else
+                        importDependencies.add(className);
+                    }
+                else{
                     dependencies.add(getClassNameFromImportLine(line));
+                    importDependencies.add(getClassNameFromImportLine(line));
+                }
             }
         }
+        
+        return importDependencies;
     }
     
-    private void getSamePackageDependencies(String classCode, String className) {
+    public ArrayList<String> getSamePackageDependencies(String classCode, String className) {
+        ArrayList<String> samePackageDependencies = new ArrayList<>();
+        
         String packageName = getPackageNameFromPackageLine(classCode);
         for (String projectClass : getClassesNamesFromPackage(packageName, projectClasses))
-            if (classCode.contains(getClassFromHashMap(projectClass)) && !className.equals(projectClass))
+            if (classCode.contains(getClassFromHashMap(projectClass)) && !className.equals(projectClass)){
                 dependencies.add(projectClass);
+                samePackageDependencies.add(projectClass);
+            }
+        
+        return samePackageDependencies;
 
     }
     

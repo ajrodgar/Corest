@@ -1,8 +1,10 @@
 package classDependencies;
 
+
+
 import java.util.HashMap;
 
-class ProjectPackagesInformation {
+public class ProjectPackagesInformation {
 
     public ProjectPackagesInformation() {
     }
