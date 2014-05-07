@@ -23,7 +23,6 @@ public class LackOfCohesionMeter {
             if (line.contains("={") && openedBlocks==1){
                 isArray = true;
                 attributes.add(line);
-                //openedBlocks++;
             }
             else if (line.contains("{")) openedBlocks++;
             else if (line.contains("}") && !isArray) openedBlocks--;
@@ -52,7 +51,6 @@ public class LackOfCohesionMeter {
     }
     
     private static String getInitializedAttributeName(String line){
-        //System.out.println("Entra: "+line);
         String lineWithOutEqual = line.substring(0, line.indexOf("=")).trim();
         return lineWithOutEqual.substring(lineWithOutEqual.lastIndexOf(" ") + 1, lineWithOutEqual.trim().length());
     }
