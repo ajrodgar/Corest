@@ -58,7 +58,7 @@ var app = app || {};
             var view = new app.RankItemView({
                 model: rank
             });
-            this.$(".stats ul.rank").append(view.render().el);
+            this.$("#rank ul.data").append(view.render().el);
         }
     });
 })(jQuery);

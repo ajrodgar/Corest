@@ -54,8 +54,15 @@ jQuery(function($) {
 		event.preventDefault();
 
 		var url = $('form input[type="url"]').val();
+		var branch = $('form input[name="branch]').val();
+		var data = {url: url, branch: branch};
 
-		sendRequest({"url": url});
+		if ($(this).is(":checked")){
+			data.username = $("input[name='username'").val();
+			data.password = $("input[name='password'").val();
+		}
+
+		sendRequest(data);
 		showWaitingMessage();
 
 		return false;

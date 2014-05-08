@@ -1,10 +1,67 @@
-
-.stats ul.rank {
-    list-style-type: none;
+#analysis-content ul.data {
+	   list-style-type: none;
     font-size: 22px;
     padding: 0;
 }
 
-.stats .rank li{
+#analysis-content ul.data li{
 	margin: 5px 0;
+}
+
+.code-smell:hover{
+	cursor: pointer;
+}
+
+.code-smell i{ 
+	margin: 0 auto;
+}
+
+.code-smell.green i{
+	background-color: rgba(67, 185, 92, 0.8);
+}
+
+.code-smell.green:hover i{
+	background-color: rgba(67, 185, 92, 1.0);
+}
+
+.code-smell.red i{
+	background-color: rgba(181, 37, 24, 0.8);
+}
+
+.code-smell.red:hover i{
+	background-color: rgba(181, 37, 24, 1.0);
+}
+
+.code-smell.green p,
+.code-smell.red p{
+	font-weight: bold;
+}
+
+.code-smell:hover i{
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#legend ul {
+	padding: 0;
+	margin: 15px 0 0 0;
+	list-style-type: none;
+}
+
+#legend ul li {
+	font-size: 12px;
+	margin-bottom: 5px
+}
+
+#legend i.grey{
+	color: grey;
+}
+
+#legend i.red{
+	color rgb(181, 37, 24)
+}
+
+
+#legend i.green{
+	color: rgb(67, 185, 92);
 }

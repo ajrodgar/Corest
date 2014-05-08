@@ -487,20 +487,19 @@ body > section#title {
     animation: fadeInUp 300ms linear 1200ms both;
 }
 
-#main-slider #private-fields {
-    margin-top: 5px
-}
 
 #main-slider .checkbox {
     margin-top: 7px
 }
 
-#main-slider #private-fields input[name="username"]{
-    margin-bottom: 5px;
-}
 
 #main-slider #advanced {
     margin-top: 7px;
+}
+
+#advanced-fields {
+    margin-top: 5px;
+    margin-bottom: 5px
 }
 
 .btn-clean {
