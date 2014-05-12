@@ -1,11 +1,11 @@
 package SortMethods;
 
-import TwitterSearch.Tweet;
+import TwitterSearch.QueryStats;
 import java.util.Comparator;
 
-public class SortByNumTweetsWeek implements Comparator<Tweet> {
+public class SortByNumTweetsWeek implements Comparator<QueryStats> {
     @Override
-    public int compare(Tweet t1, Tweet t2) {
+    public int compare(QueryStats t1, QueryStats t2) {
         return Integer.parseInt(t2.getNumTweetsWeek()) - Integer.parseInt(t1.getNumTweetsWeek());
     }
 }

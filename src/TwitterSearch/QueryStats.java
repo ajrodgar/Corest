@@ -1,6 +1,6 @@
 package TwitterSearch;
 
-public class Tweet {
+public class QueryStats {
     private String Word;
     private String NumTweetsHour;
     private String NumTweetsDay;
@@ -8,7 +8,7 @@ public class Tweet {
     private String NumTweetsMonth;
     private String NumTweetsYear;
 
-    public Tweet(String Word, String NumTweetsHour, String NumTweetsDay, String NumTweetsWeek, String NumTweetsMonth, String NumTweetsYear) {
+    public QueryStats(String Word, String NumTweetsHour, String NumTweetsDay, String NumTweetsWeek, String NumTweetsMonth, String NumTweetsYear) {
         this.Word = Word;
         this.NumTweetsHour = NumTweetsHour;
         this.NumTweetsDay = NumTweetsDay;

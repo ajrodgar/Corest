@@ -11,11 +11,11 @@ public class ClassFrequencyTwitterTest {
     public void testTwitterClassCountSearch() {
         List<String> wordList = Arrays.asList("ULPGC", "Curry", "Gran Canaria", "Gato");
         ClassFrequencyTwitter frequecyTwitter = new ClassFrequencyTwitter();
-        List<Tweet> wordsFrequency = frequecyTwitter.getNumTweetsOfClasses(wordList);
+        List<QueryStats> wordsFrequency = frequecyTwitter.getNumTweetsOfClasses(wordList);
         
         Collections.sort(wordsFrequency, new SortByNumTweetsYear());
         
-        for (Tweet tweet : wordsFrequency) {
+        for (QueryStats tweet : wordsFrequency) {
             System.out.println("Word:" + tweet.getWord());
             System.out.println("FrequencyHour: " + tweet.getNumTweetsHour());
             System.out.println("FrequencyDay: " + tweet.getNumTweetsDay());

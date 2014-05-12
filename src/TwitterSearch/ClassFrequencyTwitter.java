@@ -8,13 +8,13 @@ import trends.ApiTopsy;
 public class ClassFrequencyTwitter {
     
     public List getNumTweetsOfClasses(List<String> listWords){
-        List<Tweet> wordsFrequency = new ArrayList<>();
+        List<QueryStats> wordsFrequency = new ArrayList<>();
         ApiTopsy instance = new ApiTopsy();
         
-        for (String words : listWords) {
-            Response response = instance.searchCount(words);;
-            Tweet tweets = new Tweet(words, response.getH(), response.getD(), response.getW(), response.getM(), response.getA());
-            wordsFrequency.add(tweets);
+        for (String word : listWords) {
+            Response response = instance.searchCount(word);
+            QueryStats queryStats = new QueryStats(word, response.getH(), response.getD(), response.getW(), response.getM(), response.getA());
+            wordsFrequency.add(queryStats);
         }
         return wordsFrequency;
     }
