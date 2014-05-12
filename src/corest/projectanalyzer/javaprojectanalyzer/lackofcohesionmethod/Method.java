@@ -1,4 +1,4 @@
-package analyzer.auxiliary;
+package corest.projectanalyzer.javaprojectanalyzer.lackofcohesionmethod;
 
 import java.util.ArrayList;
 
