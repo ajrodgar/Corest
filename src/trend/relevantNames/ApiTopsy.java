@@ -1,4 +1,4 @@
-package trends;
+package trend.relevantNames;
 
 import com.maruti.otterapi.Otter4JavaException;
 import com.maruti.otterapi.TopsyConfig;

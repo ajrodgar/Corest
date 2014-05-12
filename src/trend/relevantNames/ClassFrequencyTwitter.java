@@ -1,19 +1,19 @@
-package TwitterSearch;
+package trend.relevantNames;
 
 import com.maruti.otterapi.search.Response;
 import java.util.ArrayList;
 import java.util.List;
-import trends.ApiTopsy;
+import trend.relevantNames.ApiTopsy;
 
 public class ClassFrequencyTwitter {
     
     public List getNumTweetsOfClasses(List<String> listWords){
-        List<QueryStats> wordsFrequency = new ArrayList<>();
+        List<QueryStat> wordsFrequency = new ArrayList<>();
         ApiTopsy instance = new ApiTopsy();
         
         for (String word : listWords) {
             Response response = instance.searchCount(word);
-            QueryStats queryStats = new QueryStats(word, response.getH(), response.getD(), response.getW(), response.getM(), response.getA());
+            QueryStat queryStats = new QueryStat(word, response.getH(), response.getD(), response.getW(), response.getM(), response.getA());
             wordsFrequency.add(queryStats);
         }
         return wordsFrequency;

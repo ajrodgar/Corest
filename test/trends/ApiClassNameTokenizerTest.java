@@ -1,5 +1,6 @@
 package trends;
 
+import trend.relevantNames.ApiClassNameTokenizer;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

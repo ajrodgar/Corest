@@ -1,5 +1,6 @@
 package trends;
 
+import trend.relevantNames.TrendyName;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
@@ -25,7 +26,7 @@ public class TrendyNamesTest {
         listClass.add("ClassFrequencyTwitter");
         listClass.add("QueryStats");
         
-        String result = TrendyNames.getList(listClass);
+        String result = TrendyName.getList(listClass);
         System.out.println(result);
     }
     

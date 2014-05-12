@@ -1,4 +1,4 @@
-package trends;
+package trend.relevantNames;
 
 import java.util.ArrayList;
 import java.util.Arrays;

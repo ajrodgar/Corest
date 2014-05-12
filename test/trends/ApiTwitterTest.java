@@ -1,6 +1,7 @@
 
 package trends;
 
+import trend.relevantNames.ApiTwitter;
 import org.junit.Test;
 
 public class ApiTwitterTest {

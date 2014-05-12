@@ -1,6 +1,7 @@
 
 package trends;
 
+import trend.relevantNames.ApiGoogleTrends;
 import java.util.List;
 import org.junit.Test;
 
