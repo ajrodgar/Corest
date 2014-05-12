@@ -12,7 +12,9 @@ public class Main {
         }
         
         for (Method met : LackOfCohesionMeter.getMethods(FileStringizer.fileToString(new File("simpleClass.txt")))) {
-            System.out.println(met.getSignature());
+            System.out.println("Firma: "+met.getSignature());
+            System.out.println("Cuerpo: "+met.getBody());
+            System.out.println("Lineas: "+met.getNumberOfLines());
         }
         
     }

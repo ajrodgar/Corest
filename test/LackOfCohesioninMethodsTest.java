@@ -64,4 +64,12 @@ public class LackOfCohesioninMethodsTest {
         
         Assert.assertFalse(method.isAccessing("name"));
     }
+    
+    @Test
+    public void countMethodLines(){
+        Method method = new Method();
+        method.setSignature("public void metodoPrueba(String name){");
+        method.setBody("name = \"nombre\";\nboard = null;");
+        assertEquals(2, method.getNumberOfLines());
+    }
 }
