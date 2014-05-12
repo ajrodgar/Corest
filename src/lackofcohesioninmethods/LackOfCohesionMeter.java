@@ -34,7 +34,7 @@ public class LackOfCohesionMeter {
                 }
             }
         }
-        return attributes; 
+        return attributes;
     }
     
     public static int countAttributes(String file){
@@ -104,6 +104,6 @@ public class LackOfCohesionMeter {
         for (Method method: getMethods(file)) {
             average+= method.getNumberOfLines();
         }
-        return average / getMethods(file).size();
+        return average / (double) getMethods(file).size();
     }
 }
