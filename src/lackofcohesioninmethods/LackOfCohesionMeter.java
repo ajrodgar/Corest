@@ -98,4 +98,12 @@ public class LackOfCohesionMeter {
          
          return (double)(1 - (double)accesses / (countMethods(file) * countAttributes(file)));
     }
+    
+    public static double averageMethodLines(String file){
+        double average =0.0;
+        for (Method method: getMethods(file)) {
+            average+= method.getNumberOfLines();
+        }
+        return average / getMethods(file).size();
+    }
 }
