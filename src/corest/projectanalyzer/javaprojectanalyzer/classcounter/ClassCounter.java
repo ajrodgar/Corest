@@ -1,5 +1,7 @@
 package corest.projectanalyzer.javaprojectanalyzer.classcounter;
 
+import corest.projectanalyzer.javaprojectanalyzer.Analysis;
+import corest.projectanalyzer.javaprojectanalyzer.JavaProjectAnalyzer;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
@@ -8,8 +10,6 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-import corest.projectanalyzer.javaprojectanalyzer.Analysis;
-import corest.projectanalyzer.javaprojectanalyzer.JavaProjectAnalyzer;
 
 public class ClassCounter implements JavaProjectAnalyzer{
     
@@ -60,7 +60,7 @@ public class ClassCounter implements JavaProjectAnalyzer{
 
     @Override
     public Analysis getAnalysis() {
-        return new Analysis("classCounter","Proyecto", Integer.toString(count(initialDirectorySearchFile)));
+        return new Analysis("classCounter","Project Classes", Integer.toString(count(initialDirectorySearchFile)));
     }
 
     @Override

@@ -9,7 +9,7 @@ import java.util.Map;
 
 
 public class FileListBuilder {
-    private final String directory;
+    private String directory;
     private final Map<String, String> fileContentMap;
     private final Map<String, String> treeDirectoryMap;
 
@@ -20,7 +20,7 @@ public class FileListBuilder {
         CreateMaps(directory);
     }
 
-    public String getDirectory() {
+    public String getDirectoryProjectPath() {
         return directory;
     }
     
@@ -49,6 +49,7 @@ public class FileListBuilder {
         File[] children = proyectDirectory.listFiles();
         for (File file : children) {
             if (file.isDirectory() && (file.getName().equals("src") || file.getName().equals("source"))) {
+                this.directory = file.getAbsolutePath();
                 return file.getAbsolutePath();
             }
         }

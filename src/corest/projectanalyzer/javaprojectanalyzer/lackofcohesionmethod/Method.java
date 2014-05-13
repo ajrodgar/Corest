@@ -22,6 +22,15 @@ public class Method {
         this.body = body;
     }
     
+    public int getNumberOfLines(){
+        String[] code = body.split("\n");
+        int lineCounter = 0;
+        for (String line : code) {
+            if(!line.equals(""))lineCounter++;
+        }
+        return lineCounter;
+    }
+    
     public ArrayList<String> getMethodParameters(){
         String[] parameterData = extractParameters().split(",");
         return extractParameterNames(parameterData);

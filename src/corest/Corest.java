@@ -6,6 +6,7 @@ import corest.projectanalyzer.javaprojectanalyzer.classcounter.ClassCounter;
 import corest.projectanalyzer.javaprojectanalyzer.classdependency.ClassDependencyEvaluator;
 import corest.projectanalyzer.javaprojectanalyzer.codelinecounter.AnalyzerCodeLineCounter;
 import corest.projectanalyzer.javaprojectanalyzer.cyclomaticcomplexity.AnalyzerCyclomaticComplexity;
+import corest.projectanalyzer.javaprojectanalyzer.lackofcohesionmethod.AnalyzerLackOfCohesionMethod;
 import corest.projectanalyzer.javaprojectanalyzer.rank.RankCalculator;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ public class Corest {
 
     public List<Analysis> getAnalizerClassDependency() {
         return getAnalysis(new ClassDependencyEvaluator(
-                projectRepository.getTreeDirectoryMap()));
+                projectRepository.getTreePackageMap()));
     }
 
     public List<Analysis> getAnalyzerCodeLineCounter() {
@@ -46,17 +47,17 @@ public class Corest {
     }
 
     public List<Analysis> getAnalyzerLackOfCohesionMethod() {
-        return getAnalysis(new AnalyzerCyclomaticComplexity());
+        return getAnalysis(new AnalyzerLackOfCohesionMethod());
     }
 
     public List<Analysis> getAnalyzerRank(){
-        return getAnalysis(new RankCalculator(projectRepository.getFileContentMap(),
-                projectRepository.getTreeDirectoryMap()));
+        return getAnalysis(new RankCalculator(projectRepository.getCodeClassProjectMap(),
+                projectRepository.getTreePackageMap()));
     }
 
     private List<Analysis> getAnalysis(JavaProjectAnalyzer javaProjectAnalyzer) {
         List<Analysis> analysisList = new ArrayList<>();
-        for (String className : projectRepository.getFileContentMap().keySet()) {
+        for (String className : projectRepository.getCodeClassProjectMap().keySet()) {
             analysisList.add(analyze(javaProjectAnalyzer, className));
         }
         return analysisList;
@@ -64,7 +65,7 @@ public class Corest {
 
     private Analysis analyze(JavaProjectAnalyzer javaProjectAnalyzer, String className) {
         javaProjectAnalyzer.setAnalizerParameter(className,
-                projectRepository.getFileContentMap().get(className));
+                projectRepository.getCodeClassProjectMap().get(className));
         return javaProjectAnalyzer.getAnalysis();
     }
 }

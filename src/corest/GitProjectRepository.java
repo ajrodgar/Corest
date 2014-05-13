@@ -27,8 +27,8 @@ public class GitProjectRepository implements ProjectRepository {
     }
     
      private void loadRepository(){
-        //c.setU//RI("https://bitbucket.org/Adrian_M/hpds-expressionevaluator.git"); errores en bitbucket - autentificación 
         CloneCommand c = new CloneCommand();
+        
         c.setURI(gitURL);
         c.setBranch(branch);
         Date date = new Date();
@@ -54,17 +54,17 @@ public class GitProjectRepository implements ProjectRepository {
     }
 
     @Override
-    public Map<String, String> getFileContentMap() {
+    public Map<String, String> getCodeClassProjectMap() {
         return fileMaps.getFileContentMap();
     }
 
     @Override
-    public Map<String, String> getTreeDirectoryMap() {
+    public Map<String, String> getTreePackageMap() {
         return fileMaps.getTreeDirectoryMap();
     }
 
     @Override
     public String getSourcePath() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return fileMaps.getDirectoryProjectPath();
     }
 }
