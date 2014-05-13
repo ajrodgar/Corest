@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import trend.relevantNames.ClassFrequencyTwitter;
 import trend.relevantNames.QueryHistogram;
+import trend.relevantNames.QueryHistogramLinearRegression;
 import trend.relevantNames.QueryStat;
 
 public class ClassFrequencyTwitterTest {
@@ -33,10 +34,11 @@ public class ClassFrequencyTwitterTest {
         ClassFrequencyTwitter frequecyTwitter = new ClassFrequencyTwitter();
         List<QueryHistogram> wordsFrequency = frequecyTwitter
                 .getHistogramOfClasses(Arrays.asList("ULPGC", "Curry", "Gran Canaria", "Gato"));
-        
+        QueryHistogramLinearRegression linearRegression = new QueryHistogramLinearRegression();
         for (QueryHistogram queryHistogram : wordsFrequency) {
             System.out.println("Word:" + queryHistogram.getWord());
             System.out.println("Histogram: " + Arrays.toString(queryHistogram.getHistogram()));
+            System.out.println("Linear Regression: " + Arrays.toString(linearRegression.linearRegression(queryHistogram)));
         }
     }
 }
