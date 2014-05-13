@@ -1,69 +1,69 @@
 package trend.relevantNames;
 
 public class QueryStat {
-    private String Word;
-    private String NumTweetsHour;
-    private String NumTweetsDay;
-    private String NumTweetsWeek;
-    private String NumTweetsMonth;
-    private String NumTweetsYear;
+
+    private String word;
+    private String numTweetsHour;
+    private String numTweetsDay;
+    private String numTweetsWeek;
+    private String numTweetsMonth;
+    private String numTweetsYear;
 
     public QueryStat(String Word, String NumTweetsHour, String NumTweetsDay, String NumTweetsWeek, String NumTweetsMonth, String NumTweetsYear) {
-        this.Word = Word;
-        this.NumTweetsHour = NumTweetsHour;
-        this.NumTweetsDay = NumTweetsDay;
-        this.NumTweetsWeek = NumTweetsWeek;
-        this.NumTweetsMonth = NumTweetsMonth;
-        this.NumTweetsYear = NumTweetsYear;
+        this.word = Word;
+        this.numTweetsHour = NumTweetsHour;
+        this.numTweetsDay = NumTweetsDay;
+        this.numTweetsWeek = NumTweetsWeek;
+        this.numTweetsMonth = NumTweetsMonth;
+        this.numTweetsYear = NumTweetsYear;
     }
 
     public String getWord() {
-        return Word;
+        return word;
     }
 
     public String getNumTweetsHour() {
-        return NumTweetsHour;
+        return numTweetsHour;
     }
 
     public String getNumTweetsDay() {
-        return NumTweetsDay;
+        return numTweetsDay;
     }
 
     public String getNumTweetsWeek() {
-        return NumTweetsWeek;
+        return numTweetsWeek;
     }
 
     public String getNumTweetsMonth() {
-        return NumTweetsMonth;
+        return numTweetsMonth;
     }
 
     public String getNumTweetsYear() {
-        return NumTweetsYear;
+        return numTweetsYear;
     }
 
     public void setWord(String Word) {
-        this.Word = Word;
+        this.word = Word;
     }
 
     public void setNumTweetsHour(String NumTweetsHour) {
-        this.NumTweetsHour = NumTweetsHour;
+        this.numTweetsHour = NumTweetsHour;
     }
 
     public void setNumTweetsDay(String NumTweetsDay) {
-        this.NumTweetsDay = NumTweetsDay;
+        this.numTweetsDay = NumTweetsDay;
     }
 
     public void setNumTweetsWeek(String NumTweetsWeek) {
-        this.NumTweetsWeek = NumTweetsWeek;
+        this.numTweetsWeek = NumTweetsWeek;
     }
 
     public void setNumTweetsMonth(String NumTweetsMonth) {
-        this.NumTweetsMonth = NumTweetsMonth;
+        this.numTweetsMonth = NumTweetsMonth;
     }
 
     public void setNumTweetsYear(String NumTweetsYear) {
-        this.NumTweetsYear = NumTweetsYear;
+        this.numTweetsYear = NumTweetsYear;
     }
-
 
 }
