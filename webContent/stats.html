@@ -111,6 +111,12 @@
             </div>
         </div>
 
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+            <h4>We have found <strong id="class-count">0</strong> classes in your project</h4>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
             <h3>Take a look on this data for each section</h3>
@@ -155,6 +161,9 @@
              </div>
         </div>
 
+        <div class="row text-center">
+            <button class="btn btn-success btn-lg">REPEAT ANALYSIS</button>
+        </div>
         
     </div>
 </section>
@@ -282,15 +291,6 @@
         'use strict';
 
         new app.AnalysisView();
-
-        app.CyclomaticCollection.add(new app.CyclomaticComplexity({"module": "lorem", "value": 2}));
-        app.CyclomaticCollection.add(new app.CyclomaticComplexity({"module": "lorem ipsum", "value": 3}));
-
-        app.LackCohesionCollection.add(new app.LackOfCohesion({"module": "sit", "value": 2}));
-        app.LackCohesionCollection.add(new app.LackOfCohesion({"module": "amter", "value": 34}));
-        
-        app.CodeLines.add(new app.CodeLine({"module": "perkin", "value": 22}));
-        app.CodeLines.add(new app.CodeLine({"module": "jhosef", "value": 2}));
     });
 </script>
 
