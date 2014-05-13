@@ -12,23 +12,23 @@
 	cursor: pointer;
 }
 
-.code-smell i{ 
+.code-smell .icon{ 
 	margin: 0 auto;
 }
 
-.code-smell.green i{
+.code-smell.green .icon{
 	background-color: rgba(67, 185, 92, 0.8);
 }
 
-.code-smell.green:hover i{
+.code-smell.green:hover .icon{
 	background-color: rgba(67, 185, 92, 1.0);
 }
 
-.code-smell.red i{
+.code-smell.red .icon{
 	background-color: rgba(181, 37, 24, 0.8);
 }
 
-.code-smell.red:hover i{
+.code-smell.red:hover .icon{
 	background-color: rgba(181, 37, 24, 1.0);
 }
 
@@ -37,7 +37,7 @@
 	font-weight: bold;
 }
 
-.code-smell:hover i{
+.code-smell:hover .icon{
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.8);
 }

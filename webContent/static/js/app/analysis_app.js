@@ -3,11 +3,13 @@ var app = app || {};
 (function ($) {
     'use strict';
 
-    // Rank Model
+    // CyclomaticComplexity Model
     // ----------
-    app.Rank = Backbone.Model.extend({
+    app.CyclomaticComplexity = Backbone.Model.extend({
 
-        urlRoot: '/api/rank',
+        urlRoot: '/api/cyclomaticcomplexity',
+
+        containerId: "cyclomatic-complexity",
 
         defaults: function () {
             return {
@@ -19,18 +21,92 @@ var app = app || {};
 
     });
 
-    var Ranking = Backbone.Collection.extend({
-        model: app.Rank,
+    var CyclomaticCollection = Backbone.Collection.extend({
+        model: app.CyclomaticComplexity,
 
-        url: '/api/rank'
+        url: '/api/cyclomaticcomplexity'
     });
 
-    // Create our global collection of **Ranking**.
-    app.Ranking = new Ranking();
+    // Global collection of **CyclomaticCollection**.
+    app.CyclomaticCollection = new CyclomaticCollection();
 
-    // Analysis View
+    // LackOfCohesion Model
+    // ----------
+    app.LackOfCohesion = Backbone.Model.extend({
+
+        urlRoot: '/api/lackofcohesion',
+
+        containerId: "lack-of-cohesion",
+
+        defaults: function () {
+            return {
+                id: null,
+                module: "",
+                value: 0
+            };
+        }
+
+    });
+
+    var LackCohesionCollection = Backbone.Collection.extend({
+        model: app.LackOfCohesion,
+
+        url: '/api/lackofcohesion'
+    });
+
+    // Global collection of **LackCohesionCollection**.
+    app.LackCohesionCollection = new LackCohesionCollection();
+
+    // CodeLines Model
+    // ----------
+    app.CodeLine = Backbone.Model.extend({
+
+        urlRoot: '/api/codelines',
+
+        containerId: "code-lines",
+
+        defaults: function () {
+            return {
+                id: null,
+                module: "",
+                value: 0
+            };
+        }
+
+    });
+
+    var CodeLines = Backbone.Collection.extend({
+        model: app.LackOfCohesion,
+
+        url: '/api/codelines'
+    });
+
+    // Global collection of **CodeLines**.
+    app.CodeLines = new CodeLines();
+
+    // ClassCount Model
+    // ----------
+    app.ClassCount = Backbone.Model.extend({
+
+        urlRoot: '/api/classcount',
+
+        containerId: "class-count",
+
+        defaults: function () {
+            return {
+                id: null,
+                module: "",
+                value: 0
+            };
+        }
+
+    });
+
+
+
+    // MetricItemView View - Compatible for (module, value) models.
     // --------------
-    app.RankItemView = Backbone.View.extend({
+    app.MetricItemView = Backbone.View.extend({
  
         tagName: 'li',
 
@@ -49,16 +125,25 @@ var app = app || {};
         el: "#analysis-content",
 
         initialize: function () {
-            this.listenTo(app.Ranking, 'add', this.addOne);
+            this.listenTo(app.CyclomaticCollection, 'add', this.addOne);
+            this.listenTo(app.LackCohesionCollection, 'add', this.addOne);
+            this.listenTo(app.CodeLines, 'add', this.addOne);
 
-            app.Ranking.fetch();
+            app.CyclomaticCollection.fetch();
+            app.LackCohesionCollection.fetch();
+            app.CodeLines.fetch();
         },
 
-        addOne: function (rank) {
-            var view = new app.RankItemView({
-                model: rank
+        addOne: function (metricModel) {
+            var view = new app.MetricItemView({
+                model: metricModel
             });
-            this.$("#rank ul.data").append(view.render().el);
+            
+            this.getContainerByModel(metricModel).append(view.render().el);
+        },
+
+        getContainerByModel: function(metricModel){
+            return this.$("#" + metricModel.containerId + " ul.data");
         }
     });
 })(jQuery);

@@ -80,38 +80,35 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <h3>This are the code smells we found</h3>
+
+                <div class="code-smell col-md-2 text-center">
+                    <i class="icon-comments icon-md icon"></i>
+                    <p>Comments</p>
+                </div>
+                
+                <div class="code-smell red col-md-2 text-center">
+                    <img class="icon icon-md" src="static/images/ico/zombie.png">
+                    <p>Zombie Code</p>
+                </div>
+
+                <div class="code-smell green col-md-2 text-center">
+                    <i class="icon-random icon-md icon"></i>
+                    <p>Long methods</p>
+                </div>
+
+                <div class="code-smell red col-md-2 text-center">
+                    <i class="icon-archive icon-md icon"></i>
+                    <p>Long class</p>
+                </div>     
+
+                <div id="legend" class="col-md-4">
+                    <ul>
+                        <li><i class="icon-circle icon-sm grey"></i> not code smells found</i>
+                        <li><i class="icon-circle icon-sm green"></i> low level</i>
+                        <li><i class="icon-circle icon-sm red"></i> a hight level of code smell</i>
+                    </ul>
+                </div>   
             </div>
-
-            <div class="clearfix">
-
-            <div class="code-smell col-md-2 col-md-offset-1 text-center">
-                <i class="icon-comments icon-md"></i>
-                <p>Comments</p>
-            </div>
-            
-            <div class="code-smell red col-md-2 text-center">
-                <i class="icon-random icon-md"></i>
-                <p>Zombie Code</p>
-            </div>
-
-            <div class="code-smell green col-md-2 text-center">
-                <i class="icon-exclamation icon-md"></i>
-                <p>Long methods</p>
-            </div>
-
-            <div class="code-smell red col-md-2 text-center">
-                <i class="icon-archive icon-md"></i>
-                <p>Long class</p>
-            </div>     
-
-            <div id="legend" class="col-md-2">
-                <ul>
-                    <li><i class="icon-circle icon-sm grey"></i> not code smells found</i>
-                    <li><i class="icon-circle icon-sm green"></i> low level</i>
-                    <li><i class="icon-circle icon-sm red"></i> a hight level of code smell</i>
-                </ul>
-            </div>   
-
         </div>
 
         <div class="row">
@@ -120,34 +117,40 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#cyclomatic" data-toggle="tab">Cyclomatic complexity</a></li>
-              <li><a href="#rank" data-toggle="tab">Rank</a></li>
-              <li><a href="#lorem" data-toggle="tab">Lorem</a></li>
-              <li><a href="#ipsum" data-toggle="tab">Ipsum</a></li>
+              <li class="active"><a href="#cyclomatic-complexity" data-toggle="tab">Cyclomatic complexity</a></li>
+              <li><a href="#code-lines" data-toggle="tab">Code lines</a></li>
+              <li><a href="#lack-of-cohesion" data-toggle="tab">Lack of cohesion</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-              <div class="tab-pane active" id="cyclomatic">
+              <div class="tab-pane active" id="cyclomatic-complexity">
                 <div class="row stats">
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-8 col-md-offset-2">
                         <ul class="data">
                             
                         </ul>
                     </div>
                 </div>
               </div>
-              <div class="tab-pane" id="rank">
+              <div class="tab-pane" id="code-lines">
                 <div class="row">
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-8 col-md-offset-2">
                         <ul class="data">
                             
                         </ul>
                     </div>
                 </div>
               </div>
-              <div class="tab-pane" id="lorem">...</div>
-              <div class="tab-pane" id="ipsum">...</div>
+              <div class="tab-pane" id="lack-of-cohesion">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <ul class="data">
+                            
+                        </ul>
+                    </div>
+                </div>
+              </div>
             </div>
              </div>
         </div>
@@ -279,6 +282,15 @@
         'use strict';
 
         new app.AnalysisView();
+
+        app.CyclomaticCollection.add(new app.CyclomaticComplexity({"module": "lorem", "value": 2}));
+        app.CyclomaticCollection.add(new app.CyclomaticComplexity({"module": "lorem ipsum", "value": 3}));
+
+        app.LackCohesionCollection.add(new app.LackOfCohesion({"module": "sit", "value": 2}));
+        app.LackCohesionCollection.add(new app.LackOfCohesion({"module": "amter", "value": 34}));
+        
+        app.CodeLines.add(new app.CodeLine({"module": "perkin", "value": 22}));
+        app.CodeLines.add(new app.CodeLine({"module": "jhosef", "value": 2}));
     });
 </script>
 
