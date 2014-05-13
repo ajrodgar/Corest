@@ -5,8 +5,14 @@ import java.util.List;
 
 public class CorestTest {
       public static void main(String[] args) throws Exception {
-        Corest repositoryAnalyzer = new Corest("https://github.com/ajrodgar/Corest.git", "develop");
+        //Rellenar para probar: *user y password solo necesarios para GitHub - HTTPS (SSH no funciona)
+        String url= "https://github.com/ajrodgar/Corest.git";
+        String branch= "develop";
+        String user= "";
+        String password= "";
         
+        //Corest repositoryAnalyzer = new Corest("https://github.com/ajrodgar/Corest.git", "develop");
+        Corest repositoryAnalyzer = new Corest(url, branch, user, password);
         /*System.out.println("CODE LINES:");
         
        List<Analys> analyzerCodeLines= repositoryAnalyzer.getAnalyzerCodeLineCounter();

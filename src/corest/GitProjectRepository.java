@@ -8,22 +8,32 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.jgit.api.CloneCommand;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider;
 
 
 public class GitProjectRepository implements ProjectRepository {
     String gitURL;
     String branch;
+    String user;
+    String password;
     FileListBuilder fileMaps;
 
-    public GitProjectRepository(String gitURL, String branch) {
+
+    public GitProjectRepository(String gitURL, String branch, String user, String password) {
         super();
         this.gitURL = gitURL;
         this.branch = branch;
+        this.user= user;
+        this.password= password;
         loadRepository();
     }
     
+    public GitProjectRepository(String gitURL, String branch) {
+        this(gitURL, branch, "", "");
+    }
+        
     public GitProjectRepository(String gitURL) {
-        this(gitURL, "master");
+        this(gitURL, "master", "", "");
     }
     
      private void loadRepository(){
@@ -35,6 +45,7 @@ public class GitProjectRepository implements ProjectRepository {
         String folderT= gitURL+new Timestamp(date.getTime());
         String folder= folderT.replaceAll("[:\\.\\-\\ \\/]", "");
         String rutaSrc = "temp/"+folder;
+        c.setCredentialsProvider(new UsernamePasswordCredentialsProvider(user, password));
         c.setDirectory(new File(rutaSrc));
         try {
             c.call();

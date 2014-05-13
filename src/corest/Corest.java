@@ -16,11 +16,15 @@ public class Corest {
     ProjectRepository projectRepository;
 
     public Corest(String url) {
-        this(url, "master");
+        this(url, "master","","");
+    }
+    
+    public Corest(String url, String branch) {
+        this(url, branch,"","");
     }
 
-    public Corest(String url, String branch) {
-        this.projectRepository = new GitProjectRepository(url, branch);
+    public Corest(String url, String branch, String user, String password) {
+        this.projectRepository = new GitProjectRepository(url, branch, user, password);
     }
 
     public Analysis getClassCounter() {
