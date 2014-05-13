@@ -9,7 +9,7 @@ var app = app || {};
 
         urlRoot: '/api/cyclomaticcomplexity',
 
-        containerId: "cyclomatic-complexity",
+        container: "#cyclomatic-complexity",
 
         defaults: function () {
             return {
@@ -36,7 +36,7 @@ var app = app || {};
 
         urlRoot: '/api/lackofcohesion',
 
-        containerId: "lack-of-cohesion",
+        container: "#lack-of-cohesion",
 
         defaults: function () {
             return {
@@ -63,7 +63,7 @@ var app = app || {};
 
         urlRoot: '/api/codelines',
 
-        containerId: "code-lines",
+        container: "#code-lines",
 
         defaults: function () {
             return {
@@ -90,7 +90,7 @@ var app = app || {};
 
         urlRoot: '/api/classcount',
 
-        containerId: "class-count",
+        container: "#class-count",
 
         defaults: function () {
             return {
@@ -139,11 +139,11 @@ var app = app || {};
                 model: metricModel
             });
             
-            this.getContainerByModel(metricModel).append(view.render().el);
+            this.getContainerElement(metricModel).append(view.render().el);
         },
 
-        getContainerByModel: function(metricModel){
-            return this.$("#" + metricModel.containerId + " ul.data");
+        getContainerElement: function(metricModel){
+            return this.$(metricModel.container).find("ul.data");
         }
     });
 })(jQuery);
