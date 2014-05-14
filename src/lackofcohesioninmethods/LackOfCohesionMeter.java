@@ -26,7 +26,7 @@ public class LackOfCohesionMeter {
             }
             else if (line.contains("{")) openedBlocks++;
             else if (line.contains("}") && !isArray) openedBlocks--;
-            else if (line.contains("}") && isArray) isArray=false;
+            else if (line.contains("}") && isArray) isArray = false;
             else if (openedBlocks == 1 && line.length() > 0 && !isArray){
                 if(line.contains("//")) line = line.substring(0, line.indexOf("//"));
                 if(!line.trim().equals("") && openedBlocks==1){
@@ -95,7 +95,7 @@ public class LackOfCohesionMeter {
                     accesses++;
             }
          }
-         
+         if(countMethods(file) * countAttributes(file) == 0) return 0;
          return (double)(1 - (double)accesses / (countMethods(file) * countAttributes(file)));
     }
     
