@@ -15,7 +15,7 @@ public class ClassFrequencyTwitterTest {
     public void testGetNumTweetsOfClasses() {
         ClassFrequencyTwitter frequecyTwitter = new ClassFrequencyTwitter();
         List<QueryStat> wordsFrequency = frequecyTwitter
-                .getNumTweetsOfClasses(Arrays.asList("ULPGC", "Curry", "Gran Canaria", "Gato"));
+                .getNumTweetsOfClasses(Arrays.asList("ULPGC", "Curry", "Gran Canaria", "Tenerife", "Gato"));
         
         Collections.sort(wordsFrequency, new SortByNumTweetsYear());
         
@@ -33,12 +33,16 @@ public class ClassFrequencyTwitterTest {
     public void testGetHistogramOfClasses() {
         ClassFrequencyTwitter frequecyTwitter = new ClassFrequencyTwitter();
         List<QueryHistogram> wordsFrequency = frequecyTwitter
-                .getHistogramOfClasses(Arrays.asList("ULPGC", "Curry", "Gran Canaria", "Gato"));
+                .getHistogramOfClasses(Arrays.asList("ULPGC", "Curry", "Tenerife", "Gran Canaria", "Gato"));
         QueryHistogramLinearRegression linearRegression = new QueryHistogramLinearRegression();
+        
+        Collections.sort(wordsFrequency, new SortByTrend());
+        
         for (QueryHistogram queryHistogram : wordsFrequency) {
             System.out.println("Word:" + queryHistogram.getWord());
             System.out.println("Histogram: " + Arrays.toString(queryHistogram.getHistogram()));
             System.out.println("Linear Regression: " + Arrays.toString(linearRegression.linearRegression(queryHistogram)));
+            System.out.println("Trend: " + linearRegression.getTrend(queryHistogram));
         }
     }
 }
