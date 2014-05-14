@@ -27,6 +27,7 @@ public class Method {
         int lineCounter = 0;
         for (String line : code) {
             if(!line.equals(""))lineCounter++;
+            if(line.contains("[") && line.contains("]") && line.contains("{")) lineCounter--;
         }
         return lineCounter;
     }
